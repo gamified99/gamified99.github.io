@@ -2,71 +2,127 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gamified</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+  <!-- Apple Touch Icon for iOS -->
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+  <!-- Meta for social sharing -->
+  <meta property="og:title" content="Gamified" />
+  <meta property="og:description" content="Explore the world of games through analysis, impact, and strategy." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://bhavyay99.github.io" />
+  <meta property="og:image" content="social-share-image.png" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
+
   <style>
+    :root {
+      --bg-dark: #0a0a0a;
+      --text-light: #f0f0f0;
+      --accent: #8e44ad;
+      --impact: #2ecc71;
+      --analysis: #3498db;
+      --economy: #e67e22;
+      --strategy: #e74c3c;
+    }
+
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #121212;
-      color: #f0f0f0;
+      font-family: 'Orbitron', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
     }
 
     header {
-      background-color: #1f1f1f;
+      background-color: #111;
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 1.5rem;
-    }
-
-    nav a {
-      margin-left: 1rem;
-      color: #f0f0f0;
-      text-decoration: none;
-    }
-
-    nav a:hover {
-      color: #00bcd4;
-    }
-
-    section {
-      padding: 2rem;
       border-bottom: 1px solid #333;
     }
 
-    section h2 {
-      color: #00bcd4;
+    .logo {
+      font-size: 1.5rem;
+      color: var(--accent);
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo img {
+      height: 40px;
+      width: 40px;
+    }
+
+    nav a {
+      color: var(--text-light);
+      text-decoration: none;
+      margin: 0 1rem;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      background: url('your-logo.png') no-repeat center top;
+      background-size: 100px;
+      text-align: center;
+      padding: 5rem 1rem 2rem;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin: 1rem 0;
+      color: var(--accent);
+    }
+
+    .section {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .impact { background-color: #121f14; border-left: 6px solid var(--impact); }
+    .analysis { background-color: #111a2e; border-left: 6px solid var(--analysis); }
+    .economy { background-color: #261d10; border-left: 6px solid var(--economy); }
+    .strategy { background-color: #2b1212; border-left: 6px solid var(--strategy); }
+
+    .section h2 {
+      font-size: 2rem;
+      color: var(--text-light);
+    }
+
+    .section p {
+      font-size: 1rem;
+      max-width: 700px;
+      margin: 1rem auto;
+      opacity: 0.8;
     }
 
     footer {
-      background-color: #1f1f1f;
       text-align: center;
-      padding: 1rem;
+      padding: 2rem;
+      background-color: #111;
       font-size: 0.9rem;
       color: #aaa;
-    }
-
-    @media (max-width: 600px) {
-      nav {
-        display: flex;
-        flex-direction: column;
-      }
-      nav a {
-        margin: 0.5rem 0;
-      }
     }
   </style>
 </head>
 <body>
-
   <header>
-    <h1>Gamified</h1>
+    <div class="logo">
+      <img src="your-logo.png" alt="Gamified Logo" />
+      Gamified
+    </div>
     <nav>
       <a href="#impact">Impact</a>
       <a href="#analysis">Analysis</a>
@@ -75,29 +131,33 @@
     </nav>
   </header>
 
-  <section id="impact">
+  <div class="hero">
+    <h1>Welcome to Gamified</h1>
+    <p>Explore the world of games through analysis, impact, and strategy.</p>
+  </div>
+
+  <section id="impact" class="section impact">
     <h2>Impact</h2>
-    <p>Explore how games influence players, communities, and social behavior. This section dives into the real-world effects of virtual environments.</p>
+    <p>Discover how games shape behavior, influence society, and drive change in unexpected ways.</p>
   </section>
 
-  <section id="analysis">
+  <section id="analysis" class="section analysis">
     <h2>Analysis</h2>
-    <p>In-depth breakdowns of gameplay mechanics, player psychology, and how design choices affect outcomes.</p>
+    <p>Deep dives into mechanics, player trends, and the evolution of game design.</p>
   </section>
 
-  <section id="economy">
+  <section id="economy" class="section economy">
     <h2>Economy</h2>
-    <p>Study virtual economies, in-game currencies, and how player trade and inflation mirror (or differ from) the real world.</p>
+    <p>Explore in-game economies, monetization models, and player markets.</p>
   </section>
 
-  <section id="strategy">
+  <section id="strategy" class="section strategy">
     <h2>Strategy</h2>
-    <p>Learn effective strategies for different game genres and understand how meta evolves with patches and community knowledge.</p>
+    <p>Unlock strategies, tips, and insights to level up your gameplay and decision-making.</p>
   </section>
 
   <footer>
     &copy; 2025 Gamified. All rights reserved.
   </footer>
-
 </body>
 </html>
