@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gamified - Strategy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&family=Chakra+Petch:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --primary: #8a2be2;
+      --secondary: #ba55d3;
+      --text: #f0f0f0;
+      --card: #141414;
+
+      /* Section colors */
+      --impact-color: #ff69b4;  /* Pinkish */
+      --analysis-color: #1e90ff; /* Blue */
+      --economy-color: #ffa500;  /* Orangish */
+      --strategy-color: #7fff00; /* Greenish */
+      --team-color: #40e0d0;     /* Teal */
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Chakra Petch', sans-serif;
+      background: url('background.png') center/cover no-repeat fixed;
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    header {
+      background: rgba(10, 10, 10, 0.95);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+    }
+
+    nav ul li {
+      position: relative;
+      margin-left: 1.5rem;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s;
+      display: block;
+      padding: 0.25rem 0.5rem;
+      border-bottom: none; /* Remove underline by default */
+      color: inherit;
+      cursor: pointer;
+    }
+
+    /* Navigation colors */
+    nav ul li.home > a {
+      color: var(--primary);
+    }
+    nav ul li.impact > a {
+      color: var(--impact-color);
+    }
+    nav ul li.analysis > a {
+      color: var(--analysis-color);
+    }
+    nav ul li.economy > a {
+      color: var(--economy-color);
+    }
+    nav ul li.strategy > a {
+      color: var(--strategy-color);
+    }
+    nav ul li.team > a {
+      color: var(--team-color);
+    }
+
+    /* Active tab underline */
+    nav ul li.active > a {
+      border-bottom: 2px solid currentColor; /* Underline with same color as text */
+      font-weight: 900;
+    }
+
+    /* Dropdown Menu */
+    nav ul li ul {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #111;
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      min-width: 160px;
+      z-index: 2000;
+    }
+
+    nav ul li:hover ul {
+      display: block;
+    }
+
+    nav ul li ul li {
+      margin: 0.3rem 0;
+    }
+
+    /* Dropdown link colors matching parent */
+    nav ul li.impact ul li a {
+      color: var(--impact-color);
+    }
+    nav ul li.analysis ul li a {
+      color: var(--analysis-color);
+    }
+    nav ul li.economy ul li a {
+      color: var(--economy-color);
+    }
+    nav ul li.strategy ul li a {
+      color: var(--strategy-color);
+    }
+    nav ul li.team ul li a {
+      color: var(--team-color);
+    }
+
+    nav ul li ul li a {
+      text-decoration: none;
+      font-size: 0.95rem;
+      padding: 0.25rem 0;
+      transition: color 0.3s;
+      display: block;
+      cursor: pointer;
+    }
+
+    nav ul li ul li a:hover {
+      filter: brightness(120%);
+    }
+
+    /* Page hero section */
+    .hero {
+      text-align: center;
+      padding: 6rem 1rem 2rem;
+      background: rgba(10, 10, 10, 0.6);
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      font-family: 'Orbitron', sans-serif;
+      color: var(--strategy-color); /* Change per section */
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+      color: #ccc;
+    }
+
+    .game-cards {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 3rem 1rem;
+      flex-wrap: wrap;
+    }
+
+    .game-cards a {
+      display: block;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s;
+      max-width: 300px;
+    }
+
+    .game-cards a:hover {
+      transform: scale(1.05);
+    }
+
+    .game-cards img {
+      width: 100%;
+      display: block;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #777;
+      background-color: rgba(10, 10, 10, 0.85);
+      border-top: 1px solid #222;
+    }
+
+    @media (max-width: 640px) {
+      nav ul {
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Gamified</div>
+  <nav>
+    <ul id="nav-list">
+      <li class="home active"><a href="#">Home</a></li>
+      <li class="impact"><a href="#">Impact</a>
+        <ul>
+          <li><a href="impact/valorant.html">Valorant</a></li>
+          <li><a href="impact/fortnite.html">Fortnite</a></li>
+        </ul>
+      </li>
+      <li class="analysis"><a href="#">Analysis</a>
+        <ul>
+          <li><a href="analysis/valorant.html">Valorant</a></li>
+          <li><a href="analysis/fortnite.html">Fortnite</a></li>
+        </ul>
+      </li>
+      <li class="economy"><a href="#">Economy</a>
+        <ul>
+          <li><a href="economy/valorant.html">Valorant</a></li>
+          <li><a href="economy/fortnite.html">Fortnite</a></li>
+        </ul>
+      </li>
+      <li class="strategy"><a href="#">Strategy</a>
+        <ul>
+          <li><a href="strategy/valorant.html">Valorant</a></li>
+          <li><a href="strategy/fortnite.html">Fortnite</a></li>
+        </ul>
+      </li>
+      <li class="team"><a href="#">Our Team</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero" id="hero-section">
+  <h2>Home Section</h2>
+  <p>Welcome to Gamified! Explore various aspects of your favorite games.</p>
+</section>
+
+<section class="game-cards" id="game-cards">
+  <a href="strategy/fortnite.html">
+    <img src="fortnite.png" alt="Fortnite Strategy" />
+  </a>
+  <a href="strategy/valorant.html">
+    <img src="valorant.png" alt="Valorant Strategy" />
+  </a>
+</section>
+
+<footer>
+  &copy; 2025 Gamified. Built by players, for players.
+</footer>
+
+<script>
+  const navList = document.getElementById('nav-list');
+  const heroSection = document.getElementById('hero-section');
+
+  // Content per tab - just example text, update as you want
+  const contentMap = {
+    home: {
+      title: "Home Section",
+      text: "Welcome to Gamified! Explore various aspects of your favorite games."
+    },
+    impact: {
+      title: "Impact Section",
+      text: "Discover the social and cultural impact of games like Fortnite and Valorant."
+    },
+    analysis: {
+      title: "Analysis Section",
+      text: "Dive deep into game mechanics, player stats, and tactical breakdowns."
+    },
+    economy: {
+      title: "Economy Section",
+      text: "Understand the in-game economies and market trends."
+    },
+    strategy: {
+      title: "Strategy Section",
+      text: "Explore how top players break down maps, mechanics, and win conditions."
+    },
+    team: {
+      title: "Our Team",
+      text: "Meet the players and developers behind Gamified."
+    }
+  };
+
+  navList.addEventListener('click', e => {
+    // Find if a main nav tab (li) was clicked, ignore dropdown links
+    const clickedLink = e.target.closest('a');
+    if (!clickedLink) return;
+
+    const clickedLi = clickedLink.parentElement;
+    if (!navList.contains(clickedLi)) return; // not a top level li?
+
+    if (clickedLi.querySelector('ul')) {
+      // If tab has dropdown, do nothing on parent click (or optionally toggle dropdown)
+      // You can remove this check if you want clicking parent to activate tab
+      e.preventDefault(); // prevent default link
+      return;
+    }
+
+    // Remove active class from all
+    navList.querySelectorAll('li').forEach(li => li.classList.remove('active'));
+
+    // Add active class to clicked tab
+    clickedLi.classList.add('active');
+
+    // Update hero section content based on clicked tab class name
+    const sectionName = [...clickedLi.classList].find(cls => cls !== 'active');
+
+    if (contentMap[sectionName]) {
+      heroSection.querySelector('h2').textContent = contentMap[sectionName].title;
+      heroSection.querySelector('p').textContent = contentMap[sectionName].text;
+    }
+
+    // Optional: Update .hero h2 color based on section color
+    const rootStyles = getComputedStyle(document.documentElement);
+    let colorVar = '--primary'; // fallback
+    switch(sectionName) {
+      case 'home': colorVar = '--primary'; break;
+      case 'impact': colorVar = '--impact-color'; break;
+      case 'analysis': colorVar = '--analysis-color'; break;
+      case 'economy': colorVar = '--economy-color'; break;
+      case 'strategy': colorVar = '--strategy-color'; break;
+      case 'team': colorVar = '--team-color'; break;
+    }
+    heroSection.querySelector('h2').style.color = rootStyles.getPropertyValue(colorVar);
+  });
+</script>
+
+</body>
+</html>

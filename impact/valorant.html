@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Valorant Impact - Gamified</title>
+  <link rel="icon" href="../favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&family=Chakra+Petch:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --primary: #8a2be2;
+      --secondary: #ba55d3;
+      --text: #f0f0f0;
+      --card: #141414;
+
+      --impact-color: #ff69b4; /* pink */
+      --analysis-color: #1e90ff;
+      --economy-color: #ffa500;
+      --strategy-color: #7fff00;
+      --team-color: #40e0d0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Chakra Petch', sans-serif;
+      background: url('valorant.jpg') center/cover no-repeat fixed;
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    header {
+      background: rgba(10, 10, 10, 0.9);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 0 20px var(--primary);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    nav ul li {
+      position: relative;
+      margin-left: 1.5rem;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s, border-bottom 0.3s;
+      display: block;
+      padding: 0.25rem 0.5rem;
+      white-space: nowrap;
+    }
+
+    /* Nav item colors and underline */
+    nav ul li.home > a {
+      color: var(--primary);
+      border-bottom: none; /* removed underline */
+    }
+    nav ul li.impact > a {
+      color: var(--impact-color);
+      border-bottom: 3px solid var(--impact-color);
+    }
+    nav ul li.analysis > a {
+      color: var(--analysis-color);
+    }
+    nav ul li.economy > a {
+      color: var(--economy-color);
+    }
+    nav ul li.strategy > a {
+      color: var(--strategy-color);
+    }
+    nav ul li.team > a {
+      color: var(--team-color);
+    }
+
+    /* Hover effect */
+    nav ul li a:hover {
+      color: var(--impact-color);
+    }
+
+    /* Dropdown styles */
+    nav ul li ul {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #111;
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      min-width: 160px;
+      text-align: left;
+      z-index: 2000;
+    }
+
+    nav ul li:hover ul {
+      display: block;
+    }
+
+    nav ul li ul li {
+      margin: 0.3rem 0;
+    }
+
+    nav ul li.impact ul li a { color: var(--impact-color); font-weight: bold; }
+    nav ul li.analysis ul li a { color: var(--analysis-color); font-weight: bold; }
+    nav ul li.economy ul li a { color: var(--economy-color); font-weight: bold; }
+    nav ul li.strategy ul li a { color: var(--strategy-color); font-weight: bold; }
+
+    nav ul li ul li a {
+      text-decoration: none;
+      font-weight: normal;
+      font-size: 0.95rem;
+      display: block;
+      padding: 0.25rem 0;
+      transition: color 0.3s;
+    }
+
+    nav ul li ul li a:hover {
+      color: var(--impact-colour);
+    }
+
+    main {
+      max-width: 900px;
+      margin: 4rem auto 3rem;
+      background: rgba(20, 20, 20, 0.85);
+      border-radius: 15px;
+      padding: 2.5rem 3rem;
+      box-shadow: 0 0 30px rgba(255, 105, 180, 0.5);
+    }
+
+    main h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.8rem;
+      color: var(--impact-color);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    main p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #ddd;
+      margin-bottom: 1.2rem;
+      white-space: pre-line;
+    }
+
+    /* Make entire subheading text pink */
+    .subheading {
+      color: var(--impact-color);
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #777;
+      background-color: rgba(10, 10, 10, 0.85);
+      border-top: 1px solid #222;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 640px) {
+      main {
+        margin: 2rem 1rem 2rem;
+        padding: 1.5rem 1.5rem;
+      }
+      nav ul li {
+        margin-left: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Gamified</div>
+  <nav>
+    <ul>
+      <li class="home"><a href="../index.html">Home</a></li>
+
+      <li class="impact"><a href="../impact.html">Impact</a>
+        <ul>
+          <li><a href="valorant.html" style="font-weight:bold;">Valorant</a></li>
+          <li><a href="../fortnite.html" style="font-weight:bold;">Fortnite</a></li>
+        </ul>
+      </li>
+
+      <li class="analysis"><a href="../analysis.html">Analysis</a>
+        <ul>
+          <li><a href="../../analysis/valorant.html" style="font-weight:bold;">Valorant</a></li>
+          <li><a href="../../analysis/fortnite.html" style="font-weight:bold;">Fortnite</a></li>
+        </ul>
+      </li>
+
+      <li class="economy"><a href="../economy.html">Economy</a>
+        <ul>
+          <li><a href="../../economy/valorant.html" style="font-weight:bold;">Valorant</a></li>
+          <li><a href="../../economy/fortnite.html" style="font-weight:bold;">Fortnite</a></li>
+        </ul>
+      </li>
+
+      <li class="strategy"><a href="../strategy.html">Strategy</a>
+        <ul>
+          <li><a href="../../strategy/valorant.html" style="font-weight:bold;">Valorant</a></li>
+          <li><a href="../../strategy/fortnite.html" style="font-weight:bold;">Fortnite</a></li>
+        </ul>
+      </li>
+
+      <li class="team"><a href="../../team.html">Our Team</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <h1>Social Impact of Valorant</h1>
+  <p>
+    <span class="subheading">1. Promoting Esports and Career Opportunities</span><br />
+    Youth Employment and Careers: Valorant has created jobs in broadcasting, coaching, event management, and game development.<br />
+    Scholarships and Tournaments: Community tournaments and Riot-sponsored events have supported young players and aspiring professionals.<br /><br />
+
+    <span class="subheading">2. Diversity and Inclusion</span><br />
+    Representation in Characters: Valorant includes a diverse set of agents from different ethnicities, nationalities, and backgrounds.<br />
+    Support for Women in Gaming: Riot has supported initiatives like Game Changers, a competitive scene specifically for women and marginalized genders.<br />
+    Anti-Toxicity Measures: Riot has implemented voice and chat moderation tools to promote a healthier gaming environment.<br /><br />
+
+    <span class="subheading">3. Mental Health and Community Building</span><br />
+    Safe Spaces: Valorant communities offer players places to connect, build friendships, and support one another.<br />
+    Therapeutic Use: For some players, gaming offers an outlet for stress relief, anxiety management, and personal expression.<br />
+    Awareness Campaigns: Riot has partnered with mental health organizations to raise awareness around mental wellness in gaming.<br /><br />
+
+    <span class="subheading">4. Charity and Fundraising</span><br />
+    In-Game Charity Skins and Events: Riot has released skins and held events where proceeds were donated to global causes like COVID-19 relief and social justice.<br />
+    Partnering with Nonprofits: Valorant events have collaborated with organizations supporting education, disaster relief, and health.<br /><br />
+
+    <span class="subheading">5. Education and Skill Development</span><br />
+    Learning Tools and Mentorship: Through guides, workshops, and coaching, players learn not only how to play better but also how to lead and collaborate.<br />
+    Promoting Digital Literacy: Playing Valorant helps improve computer skills, online communication, and responsible digital behavior.<br /><br />
+
+    <span class="subheading">6. Global Cultural Exchange</span><br />
+    International Tournaments: Valorant's global competitions promote cultural exchange and sportsmanship among nations.<br />
+    Community Events: Valorant connects players from all walks of life, fostering global friendships and cultural understanding.<br /><br />
+
+    In conclusion, Valorant, like many other modern video games, contributes to society not just as a form of entertainment, but also by fostering community, developing valuable skills, creating economic opportunities, and engaging in philanthropic endeavors. While challenges like toxicity exist and require ongoing efforts to address, the positive impacts are significant and continue to grow with the expanding reach of esports.
+  </p>
+</main>
+
+<footer>
+  &copy; 2025 Gamified. Built by players, for players.
+</footer>
+
+</body>
+</html>

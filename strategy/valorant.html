@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Valorant Strategy - Gamified</title>
+  <link rel="icon" href="../favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&family=Chakra+Petch:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --primary: #8a2be2;
+      --secondary: #ba55d3;
+      --text: #f0f0f0;
+      --card: #141414;
+
+      --impact-color: #ff69b4;
+      --analysis-color: #1e90ff;
+      --economy-color: #ffa500;
+      --strategy-color: #7fff00;
+      --team-color: #40e0d0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Chakra Petch', sans-serif;
+      background: url('valorant.jpg') center/cover no-repeat fixed;
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    header {
+      background: rgba(10, 10, 10, 0.9);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 0 20px var(--primary);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    nav ul li {
+      position: relative;
+      margin-left: 1.5rem;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s, border-bottom 0.3s;
+      display: block;
+      padding: 0.25rem 0.5rem;
+      white-space: nowrap;
+    }
+
+    nav ul li.home > a {
+      color: var(--primary);
+      border-bottom: none;
+    }
+
+    nav ul li.impact > a {
+      color: var(--impact-color);
+    }
+
+    nav ul li.analysis > a {
+      color: var(--analysis-color);
+    }
+
+    nav ul li.economy > a {
+      color: var(--economy-color);
+    }
+
+    nav ul li.strategy > a {
+      color: var(--strategy-color);
+      border-bottom: 3px solid var(--strategy-color);
+    }
+
+    nav ul li.team > a {
+      color: var(--team-color);
+    }
+
+    nav ul li a:hover {
+      color: var(--strategy-color);
+    }
+
+    nav ul li ul {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #111;
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      min-width: 160px;
+      text-align: left;
+      z-index: 2000;
+    }
+
+    nav ul li:hover ul {
+      display: block;
+    }
+
+    nav ul li ul li {
+      margin: 0.3rem 0;
+    }
+
+    nav ul li.strategy ul li a { color: var(--strategy-color); font-weight: bold; }
+
+    nav ul li ul li a {
+      text-decoration: none;
+      font-weight: normal;
+      font-size: 0.95rem;
+      display: block;
+      padding: 0.25rem 0;
+      transition: color 0.3s;
+    }
+
+    nav ul li ul li a:hover {
+      color: var(--strategy-color);
+    }
+
+    main {
+      max-width: 900px;
+      margin: 4rem auto 3rem;
+      background: rgba(20, 20, 20, 0.85);
+      border-radius: 15px;
+      padding: 2.5rem 3rem;
+      box-shadow: 0 0 30px rgba(127, 255, 0, 0.5);
+    }
+
+    main h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.8rem;
+      color: var(--strategy-color);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    main p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #ddd;
+      margin-bottom: 1.2rem;
+      white-space: pre-line;
+    }
+
+    .subheading {
+      color: var(--strategy-color);
+      font-weight: 700;
+      font-size: 1.2rem;
+      display: inline-block;
+      margin: 1rem 0 0.5rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #777;
+      background-color: rgba(10, 10, 10, 0.85);
+      border-top: 1px solid #222;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 640px) {
+      main {
+        margin: 2rem 1rem 2rem;
+        padding: 1.5rem 1.5rem;
+      }
+      nav ul li {
+        margin-left: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Gamified</div>
+  <nav>
+    <ul>
+      <li class="home"><a href="../index.html">Home</a></li>
+
+      <li class="impact"><a href="../impact.html">Impact</a>
+        <ul>
+          <li><a href="../../impact/valorant.html">Valorant</a></li>
+          <li><a href="../../impact/fortnite.html">Fortnite</a></li>
+        </ul>
+      </li>
+
+      <li class="analysis"><a href="../analysis.html">Analysis</a>
+        <ul>
+          <li><a href="../../analysis/valorant.html">Valorant</a></li>
+          <li><a href="../../analysis/fortnite.html">Fortnite</a></li>
+        </ul>
+      </li>
+
+      <li class="economy"><a href="../economy.html">Economy</a>
+        <ul>
+          <li><a href="../../economy/valorant.html">Valorant</a></li>
+          <li><a href="../../economy/fortnite.html">Fortnite</a></li>
+        </ul>
+      </li>
+
+      <li class="strategy"><a href="../strategy.html">Strategy</a>
+        <ul>
+          <li><a href="valorant.html" style="font-weight:bold;">Valorant</a></li>
+          <li><a href="../../strategy/fortnite.html">Fortnite</a></li>
+        </ul>
+      </li>
+
+      <li class="team"><a href="../../team.html">Our Team</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <h1>Valorant Strategy Guide</h1>
+  <p>
+    <span class="subheading">Master Your Aim</span><br />
+    • Crosshair Always at Head Level<br />
+    Don’t aim at feet or air—track heads like your life depends on it (because it does).<br />
+    • Drill Daily, Even 15 Minutes<br />
+    Deathmatch or Aim Lab—muscle memory needs reps, not vibes.<br />
+    • Tap Before You Spray<br />
+    Controlled bursts > panic full-auto unless you’re face-to-face.<br />
+
+    ⸻<br />
+
+    <span class="subheading">Move With Purpose</span><br />
+    • Stop Before Shooting<br />
+    Moving while firing = missing. Learn counter-strafing and timing.<br />
+    • Vary Your Peeks<br />
+    Don’t be predictable—switch up timing, angles, and speed.<br />
+    • Avoid Dry-Swinging Corners<br />
+    Jiggle peek or clear with utility. Face-checking = free kill (for them).<br />
+
+    ⸻<br />
+
+    <span class="subheading">Play Smart Utility</span><br />
+    • Use It to Take Space<br />
+    Smokes, flashes, mollies—don’t hoard them like skins.<br />
+    • Chain It With Teammates<br />
+    A good flash is wasted if no one swings. Time it together.<br />
+    • Fake with Intent<br />
+    Throw utility to sell a fake or bait rotations—don’t just spam.<br />
+
+    ⸻<br />
+
+    <span class="subheading">Communicate Like a Pro</span><br />
+    • Call What Matters<br />
+    Enemy positions, spike info, utility used. Keep it short and sharp.<br />
+    • Ping When Mic is Off<br />
+    Silent? Cool. Still use your pings—info saves rounds.<br />
+    • Stay Chill, Not Toxic<br />
+    Tilt ruins comms. Keep energy up even if the scoreboard’s down.<br />
+
+    ⸻<br />
+
+    <span class="subheading">Respect the Economy</span><br />
+    • Buy With the Team<br />
+    Don’t full-buy when everyone else is on a save. Sync up or fall behind.<br />
+    • Eco With Intention<br />
+    Sheriff, armor, and a dream can still clutch—if you don’t throw.<br />
+    • Track Enemy Credits<br />
+    Knowing if they’re broke or stacked can shape your next move.<br />
+  </p>
+</main>
+
+<footer>
+  &copy; 2025 Gamified. Built by players, for players.
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gamified</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&family=Chakra+Petch:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --primary: #8a2be2;
+      --secondary: #ba55d3;
+      --text: #f0f0f0;
+      --card: #141414;
+
+      --impact-color: #ff69b4;
+      --analysis-color: #1e90ff;
+      --economy-color: #ffa500;
+      --strategy-color: #7fff00;
+      --team-color: #40e0d0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Chakra Petch', sans-serif;
+      background: url('background.png') center/cover no-repeat fixed;
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    header {
+      background: rgba(10, 10, 10, 0.9);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 0 20px var(--primary);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+    }
+
+    nav ul li {
+      position: relative;
+      margin-left: 1.5rem;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+      display: block;
+      padding: 0.25rem 0.5rem;
+      white-space: nowrap;
+      color: inherit;
+    }
+
+    /* Top-level nav item colors */
+    nav ul li.home > a {
+      color: var(--primary);
+    }
+    nav ul li.impact > a {
+      color: var(--impact-color);
+    }
+    nav ul li.analysis > a {
+      color: var(--analysis-color);
+    }
+    nav ul li.economy > a {
+      color: var(--economy-color);
+    }
+    nav ul li.strategy > a {
+      color: var(--strategy-color);
+    }
+    nav ul li.team > a {
+      color: var(--team-color);
+    }
+
+    /* Hover color (optional: remains secondary) */
+    nav ul li a:hover {
+      color: var(--secondary);
+    }
+
+    /* Dropdown styles */
+    nav ul li ul {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #111;
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      min-width: 160px;
+      text-align: left;
+      z-index: 2000;
+    }
+
+    nav ul li:hover ul {
+      display: block;
+    }
+
+    nav ul li ul li {
+      margin: 0.3rem 0;
+    }
+
+    nav ul li.impact ul li a { color: var(--impact-color); }
+    nav ul li.analysis ul li a { color: var(--analysis-color); }
+    nav ul li.economy ul li a { color: var(--economy-color); }
+    nav ul li.strategy ul li a { color: var(--strategy-color); }
+
+    nav ul li ul li a {
+      text-decoration: none;
+      font-weight: normal;
+      font-size: 0.95rem;
+      display: block;
+      padding: 0.25rem 0;
+      transition: color 0.3s;
+    }
+
+    nav ul li ul li a:hover {
+      color: var(--secondary);
+    }
+
+    /* Active submenu tab underline and highlight */
+    nav ul li ul li a.active {
+      text-decoration: underline;
+      font-weight: 700;
+      color: var(--secondary);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 6rem 1rem 2rem;
+      background: rgba(10, 10, 10, 0.6);
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      font-family: 'Orbitron', sans-serif;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+      color: #ccc;
+    }
+
+    .sections {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .section-card {
+      background-color: rgba(20, 20, 20, 0.8);
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+      transition: transform 0.3s;
+    }
+
+    .section-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .section-card h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+
+    .impact h2 { color: var(--impact-color); }
+    .analysis h2 { color: var(--analysis-color); }
+    .economy h2 { color: var(--economy-color); }
+    .strategy h2 { color: var(--strategy-color); }
+
+    .section-card p {
+      font-size: 0.95rem;
+      color: #aaa;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #777;
+      background-color: rgba(10, 10, 10, 0.85);
+      border-top: 1px solid #222;
+    }
+
+    @media (max-width: 640px) {
+      .sections {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Gamified</div>
+  <nav>
+    <ul>
+      <li class="home"><a href="#">Home</a></li>
+      <li class="impact"><a href="#">Impact</a>
+        <ul>
+          <li><a href="#" class="active">Valorant</a></li>
+          <li><a href="#">Fortnite</a></li>
+        </ul>
+      </li>
+      <li class="analysis"><a href="#">Analysis</a>
+        <ul>
+          <li><a href="#">Valorant</a></li>
+          <li><a href="#">Fortnite</a></li>
+        </ul>
+      </li>
+      <li class="economy"><a href="#">Economy</a>
+        <ul>
+          <li><a href="#">Valorant</a></li>
+          <li><a href="#">Fortnite</a></li>
+        </ul>
+      </li>
+      <li class="strategy"><a href="#">Strategy</a>
+        <ul>
+          <li><a href="#">Valorant</a></li>
+          <li><a href="#">Fortnite</a></li>
+        </ul>
+      </li>
+      <li class="team"><a href="#">Our Team</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero about">
+  <h2>About Us</h2>
+  <p>Gamified explores how top games influence youth, build skills, and inspire creators through strategy, economy, and social impact.</p>
+</section>
+
+<section class="sections">
+  <div class="section-card impact">
+    <h2>Impact</h2>
+    <p>See how games influence youth culture, creativity, and learning environments.</p>
+  </div>
+
+  <div class="section-card analysis">
+    <h2>Analysis</h2>
+    <p>Break down mechanics, metas, and systems behind the most played games.</p>
+  </div>
+
+  <div class="section-card economy">
+    <h2>Economy</h2>
+    <p>Understand in-game markets, monetization, and how players drive value.</p>
+  </div>
+
+  <div class="section-card strategy">
+    <h2>Strategy</h2>
+    <p>Master skills, map tactics, and meta trends to elevate your gameplay.</p>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 Gamified. Built by players, for players.
+</footer>
+
+</body>
+</html>

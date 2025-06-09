@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fortnite Strategy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&family=Chakra+Petch:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --primary: #8a2be2;
+      --impact-color: #ff69b4;
+      --analysis-color: #1e90ff;
+      --economy-color: #ffa500;
+      --strategy-color: #7fff00;
+      --team-color: #40e0d0;
+      --text: #f0f0f0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Chakra Petch', sans-serif;
+      background: url('fortnite.jpg') center/cover no-repeat fixed;
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    header {
+      background: rgba(10, 10, 10, 0.95);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+    }
+
+    nav ul li {
+      position: relative;
+      margin-left: 1.5rem;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s;
+      padding: 0.25rem 0.5rem;
+      display: block;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    nav ul li.home > a { color: var(--primary); }
+    nav ul li.impact > a { color: var(--impact-color); }
+    nav ul li.analysis > a { color: var(--analysis-color); }
+    nav ul li.economy > a { color: var(--economy-color); }
+    nav ul li.strategy > a { color: var(--strategy-color); }
+    nav ul li.team > a { color: var(--team-color); }
+
+    nav ul li.active > a {
+      border-bottom: 2px solid currentColor;
+      font-weight: 900;
+    }
+
+    nav ul li ul {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #111;
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      min-width: 160px;
+      z-index: 2000;
+    }
+
+    nav ul li:hover ul {
+      display: block;
+    }
+
+    nav ul li ul li {
+      margin: 0.3rem 0;
+    }
+
+    nav ul li.impact ul li a { color: var(--impact-color); }
+    nav ul li.analysis ul li a { color: var(--analysis-color); }
+    nav ul li.economy ul li a { color: var(--economy-color); }
+    nav ul li.strategy ul li a { color: var(--strategy-color); }
+    nav ul li.team ul li a { color: var(--team-color); }
+
+    nav ul li ul li a {
+      text-decoration: none;
+      font-size: 0.95rem;
+      display: block;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover,
+    nav ul li ul li a:hover {
+      color: var(--strategy-color);
+    }
+
+    .strategy-box {
+      padding: 2rem;
+      max-width: 900px;
+      margin: 3rem auto;
+      background: rgba(0, 0, 0, 0.6);
+      border: 2px solid var(--strategy-color);
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(127, 255, 0, 0.4);
+      backdrop-filter: blur(4px);
+      color: var(--text);
+    }
+
+    .strategy-box h1 {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--strategy-color);
+      font-size: 2.6rem;
+      margin-bottom: 1.2rem;
+      text-align: center;
+    }
+
+    .strategy-box h3 {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--strategy-color);
+      font-size: 1.5rem;
+      margin: 2rem 0 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .strategy-box ul {
+      margin: 0.25rem 0 1.5rem 1.5rem;
+      line-height: 1.6;
+      font-weight: 600;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #777;
+      background-color: rgba(10, 10, 10, 0.85);
+      border-top: 1px solid #222;
+    }
+
+    @media (max-width: 640px) {
+      nav ul {
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Gamified</div>
+<nav>
+  <ul>
+    <li class="home"><a href="../index.html">Home</a></li>
+    <li class="impact"><a href="../impact.html">Impact</a>
+      <ul>
+        <li><a href="../impact/valorant.html">Valorant</a></li>
+        <li><a href="../impact/fortnite.html">Fortnite</a></li>
+      </ul>
+    </li>
+    <li class="analysis"><a href="../analysis.html">Analysis</a>
+      <ul>
+        <li><a href="../analysis/valorant.html">Valorant</a></li>
+        <li><a href="../analysis/fortnite.html">Fortnite</a></li>
+      </ul>
+    </li>
+    <li class="economy"><a href="../economy.html">Economy</a>
+      <ul>
+        <li><a href="../economy/valorant.html">Valorant</a></li>
+        <li><a href="../economy/fortnite.html">Fortnite</a></li>
+      </ul>
+    </li>
+    <li class="strategy active"><a href="../strategy.html">Strategy</a>
+      <ul>
+        <li><a href="valorant.html">Valorant</a></li>
+        <li><a href="fortnite.html">Fortnite</a></li>
+      </ul>
+    </li>
+    <li class="team"><a href="../team.html">Our Team</a></li>
+  </ul>
+</nav>
+</header>
+
+<!-- Fortnite Strategy Content Box -->
+<div class="strategy-box">
+  <h1>Fortnite Strategy</h1>
+
+  <h3>Battle Royale</h3>
+  <ul>
+    <li>Land Smart</li>
+    <li>Basic Building</li>
+    <li>Good Loadout</li>
+    <li>Box Fights</li>
+    <li>Know Map</li>
+  </ul>
+
+  <h3>Ballistic</h3>
+  <ul>
+    <li>No Building</li>
+    <li>Clean Tracking</li>
+    <li>Pre-aim Corners</li>
+    <li>Fast Pacing</li>
+    <li>Use Cover</li>
+  </ul>
+
+  <h3>LEGO</h3>
+  <ul>
+    <li>Gather Early</li>
+    <li>Build Bed & Fire</li>
+    <li>Create Villages</li>
+    <li>Explore Slowly</li>
+    <li>Farm & Cook</li>
+  </ul>
+
+  <h3>RELOAD</h3>
+  <ul>
+    <li>Land as Squad</li>
+    <li>Focus Elims</li>
+    <li>Respawns</li>
+    <li>Confident Fights</li>
+    <li>Mid-Game Domination</li>
+  </ul>
+
+  <h3>ZERO BUILD</h3>
+  <ul>
+    <li>Stick to Cover</li>
+    <li>Balanced Loadout</li>
+    <li>Practice Aim</li>
+    <li>Avoid Open Fights</li>
+    <li>Communicate</li>
+  </ul>
+
+  <h3>ROCKET RACING</h3>
+  <ul>
+    <li>Watch Paths</li>
+    <li>Know Shortcuts</li>
+    <li>Drift Boost</li>
+    <li>Strong Start</li>
+    <li>Clean Driving</li>
+  </ul>
+</div>
+
+<footer>
+  &copy; 2025 Gamified. Built by players, for players.
+</footer>
+
+</body>
+</html>
