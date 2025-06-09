@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Gamified - Our Team</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&family=Chakra+Petch:wght@400;700&display=swap" rel="stylesheet" />
-<link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <style>
     :root {
       --bg: #0a0a0a;
@@ -104,10 +104,11 @@
     nav ul li ul li {
       margin: 0.3rem 0;
     }
-nav ul li a:hover {
-  color: var(--team-color);
-}
- 
+
+    nav ul li a:hover {
+      color: var(--team-color);
+    }
+
     nav ul li.impact ul li a { color: var(--impact-color); }
     nav ul li.analysis ul li a { color: var(--analysis-color); }
     nav ul li.economy ul li a { color: var(--economy-color); }
@@ -126,31 +127,26 @@ nav ul li a:hover {
       filter: brightness(120%);
     }
 
-    .hero {
+    .team-section {
       text-align: center;
-      padding: 6rem 1rem 2rem;
-      background: rgba(10, 10, 10, 0.6);
+      padding: 6rem 2rem;
+      margin: 3rem auto;
+      max-width: 800px;
+      background: rgba(10, 10, 10, 0.6); /* More opaque look like the original hero */
+      border-left: 4px solid var(--team-color);
+      border-radius: 12px;
     }
 
-    .hero h2 {
+    .team-section h2 {
       font-size: 2.5rem;
       font-family: 'Orbitron', sans-serif;
       color: var(--team-color);
       margin-bottom: 1rem;
     }
 
-    .hero p {
+    .team-section p {
       font-size: 1.1rem;
-      max-width: 700px;
-      margin: 0 auto;
-      color: #ccc;
-    }
-
-    .team-content {
-      text-align: center;
-      padding: 3rem 2rem;
-      max-width: 900px;
-      margin: 0 auto;
+      color: var(--text);
     }
 
     footer {
@@ -205,18 +201,10 @@ nav ul li a:hover {
     </ul>
   </nav>
 </header>
-<section class="hero">
-  <h2>Meet the Team</h2>
-  <p>The creators, thinkers, and players powering Gamified. We build what we play — and play what we build.</p>
-</section>
 
-<section class="team-content">
-  <p>
-    Our team consists of dedicated teens passionate about gaming, tech, and social change. From in-game analysis to real-world impact, everyone contributes a unique skill — whether it's coding, design, strategy, or community engagement.
-  </p>
-  <p style="margin-top: 1.5rem;">
-    Want to join the squad or support the mission? Reach out to us through our socials!
-  </p>
+<section class="team-section">
+  <h2>Meet the Team</h2>
+  <p>We’re the squad behind Gamified — turning gameplay into something that matters.</p>
 </section>
 
 <footer>
