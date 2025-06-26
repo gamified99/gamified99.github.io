@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Gamified - Impact</title>
+  <title>Gamified - RUN.EXE</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&family=Chakra+Petch:wght@400;700&display=swap" rel="stylesheet" />
-<link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <style>
     :root {
       --bg: #0a0a0a;
@@ -14,12 +14,12 @@
       --text: #f0f0f0;
       --card: #141414;
 
-      /* Section colors */
-      --impact-color: #ff3cac;
-      --analysis-color: #38bdf8;
-      --economy-color: #f97316;
-      --strategy-color: #22c55e;
-      --team-color: #60a5fa;
+      --impact-color: #ff69b4;
+      --analysis-color: #1e90ff;
+      --economy-color: #ffa500;
+      --strategy-color: #7fff00;
+      --team-color: #40e0d0;
+      --games-color: #ff1744;
     }
 
     * {
@@ -74,23 +74,19 @@
       color: inherit;
     }
 
-    /* Navigation colors */
     nav ul li.home > a { color: var(--primary); }
     nav ul li.impact > a { color: var(--impact-color); }
     nav ul li.analysis > a { color: var(--analysis-color); }
     nav ul li.economy > a { color: var(--economy-color); }
     nav ul li.strategy > a { color: var(--strategy-color); }
     nav ul li.team > a { color: var(--team-color); }
+    nav ul li.games > a { color: var(--games-color); }
 
-    /* Active tab underline */
     nav ul li.active > a {
       border-bottom: 2px solid currentColor;
       font-weight: 900;
     }
-nav ul li a:hover {
-  color: var(--impact-color);
-}
-    /* Dropdown Menu */
+
     nav ul li ul {
       display: none;
       position: absolute;
@@ -129,7 +125,10 @@ nav ul li a:hover {
       filter: brightness(120%);
     }
 
-    /* Page hero section */
+    nav ul li a:hover {
+      color: var(--games-color);
+    }
+
     .hero {
       text-align: center;
       padding: 6rem 1rem 2rem;
@@ -139,7 +138,7 @@ nav ul li a:hover {
     .hero h2 {
       font-size: 2.5rem;
       font-family: 'Orbitron', sans-serif;
-      color: var(--impact-color);
+      color: var(--games-color);
       margin-bottom: 1rem;
     }
 
@@ -150,30 +149,18 @@ nav ul li a:hover {
       color: #ccc;
     }
 
-    .game-cards {
+    .game-frame {
       display: flex;
       justify-content: center;
-      gap: 2rem;
-      padding: 3rem 1rem;
-      flex-wrap: wrap;
+      align-items: center;
+      padding: 2rem;
     }
 
-    .game-cards a {
-      display: block;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-      transition: transform 0.3s;
-      max-width: 300px;
-    }
-
-    .game-cards a:hover {
-      transform: scale(1.05);
-    }
-
-    .game-cards img {
-      width: 100%;
-      display: block;
+    iframe {
+      width: 960px;
+      height: 600px;
+      border: none;
+      box-shadow: 0 0 25px rgba(0, 191, 255, 0.4);
     }
 
     footer {
@@ -185,7 +172,11 @@ nav ul li a:hover {
       border-top: 1px solid #222;
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 1000px) {
+      iframe {
+        width: 100%;
+        height: 60vh;
+      }
       nav ul {
         flex-wrap: wrap;
         gap: 1rem;
@@ -200,7 +191,7 @@ nav ul li a:hover {
   <nav>
     <ul>
       <li class="home"><a href="index.html">Home</a></li>
-      <li class="impact active"><a href="#">Impact</a>
+      <li class="impact"><a href="impact.html">Impact</a>
         <ul>
           <li><a href="impact/valorant.html">Valorant</a></li>
           <li><a href="impact/fortnite.html">Fortnite</a></li>
@@ -225,22 +216,18 @@ nav ul li a:hover {
         </ul>
       </li>
       <li class="team"><a href="team.html">Our Team</a></li>
+      <li class="games active"><a href="game.html">Games</a></li>
     </ul>
   </nav>
 </header>
 
 <section class="hero">
-  <h2>Impact Section</h2>
-  <p>Discover how games empower communities, spark creativity, and inspire young creators to build and share globally.</p>
+  <h2>RUN.EXE</h2>
+  <p>A cyberpunk runner game where every second counts. Step into the glitch, escape the system — and survive.</p>
 </section>
 
-<section class="game-cards">
-  <a href="impact/fortnite.html">
-    <img src="fortnite.png" alt="Fortnite Impact" />
-  </a>
-  <a href="impact/valorant.html">
-    <img src="valorant.png" alt="Valorant Impact" />
-  </a>
+<section class="game-frame">
+  <iframe src="run/run.html" allowfullscreen></iframe>
 </section>
 
 <footer>
