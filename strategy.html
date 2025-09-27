@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Gamified - Strategy</title>
+  <title>Gamified | Strategy</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&family=Chakra+Petch:wght@400;700&display=swap" rel="stylesheet" />
-<link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <style>
     :root {
       --bg: #0a0a0a;
@@ -13,25 +13,25 @@
       --secondary: #ba55d3;
       --text: #f0f0f0;
       --card: #141414;
-
       --impact-color: #ff3cac;
       --analysis-color: #38bdf8;
       --economy-color: #f97316;
       --strategy-color: #22c55e;
       --team-color: #60a5fa;
     }
-
-    * {
+* {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+
 
     body {
       font-family: 'Chakra Petch', sans-serif;
       background: url('background.png') center/cover no-repeat fixed;
       color: var(--text);
       min-height: 100vh;
+      margin: 0;
     }
 
     header {
@@ -52,25 +52,15 @@
       color: var(--primary);
     }
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      align-items: center;
-    }
-
-    nav ul li {
-      position: relative;
-      margin-left: 1.5rem;
-    }
-
+    nav ul { list-style: none; display: flex; align-items: center; }
+    nav ul li { position: relative; margin-left: 1.5rem; }
     nav ul li a {
-      text-decoration: none;
-      font-weight: bold;
-      transition: all 0.3s;
-      display: block;
-      padding: 0.25rem 0.5rem;
-      border-bottom: none;
-      color: inherit;
+      text-decoration: none; 
+font-weight: bold; 
+transition: all 0.3s;
+      display: block; padding: 0.25rem 0.5rem;
+border-bottom: none; 
+color: inherit;
     }
 
     nav ul li.home > a { color: var(--primary); }
@@ -79,31 +69,9 @@
     nav ul li.economy > a { color: var(--economy-color); }
     nav ul li.strategy > a { color: var(--strategy-color); }
     nav ul li.team > a { color: var(--team-color); }
+    nav ul li.active > a { border-bottom: 2px solid currentColor; font-weight: 900; }
 
-    nav ul li.active > a {
-      border-bottom: 2px solid currentColor;
-      font-weight: 900;
-    }
 
-    nav ul li ul {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: #111;
-      padding: 0.8rem 1rem;
-      border-radius: 8px;
-      min-width: 160px;
-      z-index: 2000;
-    }
-
-    nav ul li:hover ul {
-      display: block;
-    }
-
-    nav ul li ul li {
-      margin: 0.3rem 0;
-    }
 
     nav ul li.impact ul li a { color: var(--impact-color); }
     nav ul li.analysis ul li a { color: var(--analysis-color); }
@@ -111,86 +79,199 @@
     nav ul li.strategy ul li a { color: var(--strategy-color); }
     nav ul li.team ul li a { color: var(--team-color); }
 
-    nav ul li ul li a {
-      text-decoration: none;
-      font-size: 0.95rem;
-      padding: 0.25rem 0;
-      transition: color 0.3s;
-      display: block;
+    nav ul li ul {
+      display: none; position: absolute; top: 100%; left: 0; background: #111;
+      padding: 0.8rem 1rem; border-radius: 8px; min-width: 160px; z-index: 2000;
     }
-
-    nav ul li ul li a:hover {
-      filter: brightness(120%);
-    }
+    nav ul li:hover ul { display: block; }
+    nav ul li ul li { margin: 0.3rem 0; }
+    nav ul li ul li a { font-size: 0.95rem; display: block; padding: 0.25rem 0; }
+    nav ul li ul li a:hover { filter: brightness(120%); }
 
     .hero {
-      text-align: center;
-      padding: 6rem 1rem 2rem;
-      background: rgba(10, 10, 10, 0.6);
+      text-align: center; padding: 6rem 1rem 2rem; background: rgba(10, 10, 20, 0.6);
     }
-
     .hero h2 {
-      font-size: 2.5rem;
-      font-family: 'Orbitron', sans-serif;
-      color: var(--strategy-color);
-      margin-bottom: 1rem;
+      font-size: 2.5rem; font-family: 'Orbitron', sans-serif;
+      color: var(--strategy-color); margin-bottom: 1rem;
     }
+    .hero p { font-size: 1.1rem; max-width: 700px; margin: 0 auto; color: #ccc; }
 
-    .hero p {
-      font-size: 1.1rem;
-      max-width: 700px;
-      margin: 0 auto;
-      color: #ccc;
-    }
-nav ul li a:hover {
-  color: var(--strategy-color);
-}
- 
     .game-cards {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      padding: 3rem 1rem;
-      flex-wrap: wrap;
+      display: flex; justify-content: center; gap: 2rem; padding: 3rem 1rem; flex-wrap: wrap;
     }
-
     .game-cards a {
-      display: block;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-      transition: transform 0.3s;
+      display: block; border-radius: 12px; overflow: hidden;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1); transition: transform 0.3s;
       max-width: 300px;
     }
-
-    .game-cards a:hover {
-      transform: scale(1.05);
-    }
-
-    .game-cards img {
-      width: 100%;
-      display: block;
-    }
+    .game-cards a:hover { transform: scale(1.05); }
+    .game-cards img { width: 100%; display: block; }
 
     footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      color: #777;
-      background-color: rgba(10, 10, 10, 0.85);
-      border-top: 1px solid #222;
+      text-align: center; padding: 2rem; font-size: 0.9rem; color: #777;
+      background-color: rgba(10, 10, 10, 0.85); border-top: 1px solid #222;
     }
 
-    @media (max-width: 640px) {
-      nav ul {
-        flex-wrap: wrap;
-        gap: 1rem;
-      }
+    /* QUIZ SECTION STYLES */
+    #startBtn, #downloadBtn, #retryBtn, #submitBtn {
+      padding: 1rem 2rem; font-size: 1.2rem;
+      background: linear-gradient(135deg, #22c55e, #00ffe1);
+      border: none; color: #000; border-radius: 12px;
+      cursor: pointer; display: block; margin: 2rem auto;
+      font-weight: bold; transition: transform 0.2s;
+    }
+    #startBtn:hover, #downloadBtn:hover, #retryBtn:hover, #submitBtn:hover { transform: scale(1.05); }
+
+    #quizForm {
+      background: rgba(20, 20, 20, 0.6);
+      padding: 2rem; border-radius: 12px; backdrop-filter: blur(8px);
+      display: none; margin: 2rem auto; max-width: 900px;
+    }
+    .question { margin: 2rem 0; }
+    .question h3 { color: #fff; margin-bottom: 0.5rem; }
+    label { display: block; margin: 0.5rem 0; cursor: pointer; }
+    input[type="radio"] { margin-right: 0.6rem; }
+
+    /* 🎨 STATIC DECORATIVE ELEMENTS FOR RESULT CARD */
+    #resultCard {
+      position: relative;
+      max-width: 650px;
+      margin: 2rem auto;
+      padding: 2.5rem 2rem;
+      border-radius: 20px;
+      background: linear-gradient(145deg, rgba(20,20,20,0.95), rgba(34,197,94,0.05));
+      border: 2px solid rgba(34,197,94,0.6);
+      box-shadow: 0 0 25px rgba(0,255,225,0.5), inset 0 0 15px rgba(34,197,94,0.2);
+      display: none;
+      color: #38BDF8;
+      text-align: center;
+      font-weight: 900;
+      font-size: 1.2rem;
+      overflow: hidden;
+    }
+
+    /* Fallback background for download version if image fails */
+    .download-background {
+      background: linear-gradient(rgba(10, 10, 30, 0.8), rgba(20, 20, 40, 0.9)), 
+                  radial-gradient(circle at 30% 70%, rgba(138, 43, 226, 0.3) 0%, transparent 50%),
+                  radial-gradient(circle at 70% 30%, rgba(34, 197, 94, 0.2) 0%, transparent 50%),
+                  linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #16213e 100%);
+      background-size: cover;
+    }
+
+    /* Subtle watermark text */
+    #resultCard .watermark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-25deg);
+      font-size: 5rem;
+      color: rgba(138,43,226,0.12);
+      font-weight: 900;
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    /* Add decorative lines and overlays */
+    #resultCard::before,
+    #resultCard::after {
+      content: "";
+      position: absolute;
+      pointer-events: none;
+      border-radius: 20px;
+    }
+
+    /* Diagonal corner lines */
+    #resultCard::before {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(34,197,94,0.3) 1px, transparent 1px),
+                  linear-gradient(225deg, rgba(0,255,225,0.2) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    /* Horizontal subtle lines overlay */
+    #resultCard::after {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(34,197,94,0.1),
+        rgba(34,197,94,0.1) 1px,
+        transparent 1px,
+        transparent 8px
+      );
+    }
+
+    /* 🌟 Corner Stars */
+    #resultCard .corner-star {
+      position: absolute;
+      color: #22c55e;
+      font-size: 1.2rem;
+      text-shadow: 0 0 6px rgba(34,197,94,0.7);
+      z-index: 2;
+    }
+
+    /* Star positions */
+    #resultCard .star-tl { top: 10px; left: 10px; }
+    #resultCard .star-tr { top: 10px; right: 10px; }
+    #resultCard .star-bl { bottom: 10px; left: 10px; }
+    #resultCard .star-br { bottom: 10px; right: 10px; }
+
+    /* ⚔️ Crossed swords between stars */
+    #resultCard .sword-top {
+      top: 10px; left: 50%; transform: translateX(-50%); font-size: 1.4rem;
+    }
+    #resultCard .sword-bottom {
+      bottom: 10px; left: 50%; transform: translateX(-50%); font-size: 1.4rem;
+    }
+    #resultCard .sword-left {
+      left: 10px; top: 50%; transform: translateY(-50%); font-size: 1.4rem;
+    }
+    #resultCard .sword-right {
+      right: 10px; top: 50%; transform: translateY(-50%); font-size: 1.4rem;
+    }
+
+    /* Text styling */
+    #resultCard h2 {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+      color: #8a2be2;
+      position: relative;
+      z-index: 3;
+    }
+
+    #resultCard .tagline {
+      font-style: italic;
+      color: #22c55e;
+      margin: 0.5rem 0 1rem;
+      position: relative;
+      z-index: 3;
+    }
+
+    #resultCard p {
+      color: #38BDF8;
+      margin-bottom: 0.6rem;
+      position: relative;
+      z-index: 3;
+    }
+
+    #resultCard .topGames {
+      font-size: 1.6rem;
+      color: #38BDF8;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 3;
     }
   </style>
 </head>
 <body>
-
 <header>
   <div class="logo">Gamified</div>
   <nav>
@@ -224,9 +305,39 @@ nav ul li a:hover {
     </ul>
   </nav>
 </header>
+
 <section class="hero">
   <h2>Strategy Section</h2>
   <p>Explore how top players break down maps, mechanics, and win conditions in Fortnite and Valorant.</p>
+</section>
+
+<!-- 🎮 GENRE QUIZ SECTION BELOW -->
+<section>
+  <button id="startBtn"><b>Suggest Games!</b></button>
+  <form id="quizForm">
+    <button type="submit" id="submitBtn">Suggest Games!</button>
+  </form>
+
+<!-- 🎨 STYLIZED RESULT CARD -->
+<div id="resultCard">
+  <div class="watermark">GAMIFIED</div>
+  <h2 id="genreTitle"></h2>
+  <div class="tagline" id="genreTagline"></div>
+  <p id="genreDescription"></p>
+  <p class="topGames"><strong>TOP GAMES</strong></p>
+  <p id="genreGames"></p>
+  <span class="corner-star star-tl">⬢</span>
+  <span class="corner-star star-tr">⬢</span>
+  <span class="corner-star star-bl">⬢</span>
+  <span class="corner-star star-br">⬢</span>
+  <span class="corner-star sword-top">✧</span>
+  <span class="corner-star sword-bottom">✧</span>
+  <span class="corner-star sword-left">◆</span>
+  <span class="corner-star sword-right">◆</span>
+</div>
+
+  <button id="downloadBtn" style="display:none;">Download Badge</button>
+  <button id="retryBtn" style="display:none;">Try Again</button>
 </section>
 
 <section class="game-cards">
@@ -242,5 +353,262 @@ nav ul li a:hover {
   &copy; 2025 Gamified. Built by players, for players.
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script>
+  const questions = [
+    {
+      q: "What kind of music do you vibe with the most?",
+      options: [
+        { text: "Chill Lo-fi or instrumentals", genres: ["Strategy", "Simulation"] },
+        { text: "Acoustic or soft pop", genres: ["Casual", "Role Playing"] },
+        { text: "Dark techno or indie alt", genres: ["Adventure", "Action"] },
+        { text: "Hype rap, EDM, or meme remixes", genres: ["Action", "Arcade"] }
+      ]
+    },
+    {
+      q: "Your favorite way to spend a weekend?",
+      options: [
+        { text: "Planning future goals or organizing your space", genres: ["Strategy", "Simulation"] },
+        { text: "Catching up with close friends or helping family", genres: ["Casual", "Role Playing"] },
+        { text: "Solo time: reading, sketching, or just zoning out", genres: ["Adventure", "Simulation"] },
+        { text: "Random adventures or chaos binge", genres: ["Action", "Arcade"] }
+      ]
+    },
+    {
+      q: "What kind of movies do you enjoy the most?",
+      options: [
+        { text: "Mystery, documentaries, or mind-benders", genres: ["Strategy", "Role Playing"] },
+        { text: "Wholesome dramas or rom-coms", genres: ["Casual", "Simulation"] },
+        { text: "Indie films or psychological thrillers", genres: ["Adventure", "Role Playing"] },
+        { text: "Parodies, wild comedies, or fast-paced action", genres: ["Action", "Arcade"] }
+      ]
+    },
+    {
+      q: "How do you handle unexpected changes to your plans?",
+      options: [
+        { text: "Instantly make a new plan", genres: ["Strategy", "Simulation"] },
+        { text: "Check in with everyone and adapt together", genres: ["Role Playing", "Casual"] },
+        { text: "Stay quiet, process, then adjust silently", genres: ["Adventure", "Simulation"] },
+        { text: "Wing it, and somehow make it epic", genres: ["Action", "Arcade"] }
+      ]
+    },
+    {
+      q: "You walk into a crowded place — what's your default vibe?",
+      options: [
+        { text: "Scan the room and move efficiently", genres: ["Strategy", "Simulation"] },
+        { text: "Spot someone you know and catch up", genres: ["Role Playing", "Casual"] },
+        { text: "Find a corner and observe", genres: ["Adventure", "Simulation"] },
+        { text: "Make conversations, post instantly", genres: ["Action", "Arcade"] }
+      ]
+    },
+    {
+      q: "Your favorite kind of food?",
+      options: [
+        { text: "Meal-prepped bowls or clean eating", genres: ["Simulation", "Strategy"] },
+        { text: "Homemade comfort food", genres: ["Casual", "Role Playing"] },
+        { text: "Aesthetic café snacks or obscure dishes", genres: ["Adventure", "Role Playing"] },
+        { text: "Street food or wild junk", genres: ["Action", "Arcade"] }
+      ]
+    },
+    {
+      q: "You're on 5% battery, no charger. What do you do?",
+      options: [
+        { text: "Text key people, close everything", genres: ["Strategy", "Simulation"] },
+        { text: "Ask someone for help", genres: ["Casual", "Role Playing"] },
+        { text: "Turn it off to preserve", genres: ["Adventure", "Simulation"] },
+        { text: "Use every drop posting and texting", genres: ["Action", "Arcade"] }
+      ]
+    },
+    {
+      q: "Your personal notebook is filled with…",
+      options: [
+        { text: "Goals, lists, hacks", genres: ["Strategy", "Simulation"] },
+        { text: "Journals, letters", genres: ["Casual", "Role Playing"] },
+        { text: "Sketches, random thoughts", genres: ["Adventure", "Simulation"] },
+        { text: "Memes, lyrics, chaos", genres: ["Action", "Arcade"] }
+      ]
+    },
+    {
+      q: "Favorite kind of YouTube content?",
+      options: [
+        { text: "Explainers, tutorials", genres: ["Strategy", "Simulation"] },
+        { text: "Vlogs, routines", genres: ["Casual", "Role Playing"] },
+        { text: "Analog horror, animations", genres: ["Adventure", "Role Playing"] },
+        { text: "Pranks, chaos edits", genres: ["Action", "Arcade"] }
+      ]
+    },
+    {
+      q: "Team project lands on you last-minute. You...",
+      options: [
+        { text: "Take charge and organize", genres: ["Strategy", "Action"] },
+        { text: "Ask what everyone's good at", genres: ["Role Playing", "Casual"] },
+        { text: "Silently finish the hardest part", genres: ["Simulation", "Adventure"] },
+        { text: "Suggest something wild — and do it", genres: ["Action", "Arcade"] }
+      ]
+    }
+  ];
+
+  const quizForm = document.getElementById("quizForm");
+  const startBtn = document.getElementById("startBtn");
+  const resultCard = document.getElementById("resultCard");
+  const downloadBtn = document.getElementById("downloadBtn");
+  const retryBtn = document.getElementById("retryBtn");
+
+  startBtn.onclick = () => {
+    startBtn.style.display = "none";
+    questions.forEach((q, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      div.innerHTML = `<h3>Q${index + 1}. ${q.q}</h3>`;
+      q.options.forEach(opt => {
+        div.innerHTML += `
+          <label>
+            <input type="radio" name="q${index}" value='${JSON.stringify(opt.genres)}' required />
+            ${opt.text}
+          </label>`;
+      });
+      quizForm.insertBefore(div, quizForm.lastElementChild);
+    });
+    quizForm.style.display = "block";
+  };
+
+  quizForm.onsubmit = (e) => {
+    e.preventDefault();
+    const genreCount = {};
+    const formData = new FormData(quizForm);
+    for (let value of formData.values()) {
+      const genres = JSON.parse(value);
+      genres.forEach(g => genreCount[g] = (genreCount[g] || 0) + 1);
+    }
+    const sorted = Object.entries(genreCount).sort((a, b) => b[1] - a[1]);
+    const topGenre = sorted[0][0];
+
+    const genreTaglines = {
+      "Action": "You bring energy, instinct, and adrenaline.",
+      "Adventure": "You crave stories, worlds, and discovery.",
+      "Simulation": "You optimize, build, and perfect systems.",
+      "Role Playing": "You love narrative, growth, and emotion.",
+      "Strategy": "You see 10 steps ahead and plan for victory.",
+      "Casual": "You play for fun, comfort, and chill vibes.",
+      "Arcade": "You're fast, fun, and a little chaotic.",
+      "Racing": "You live life in the fast lane."
+    };
+
+    const genreGames = {
+      "Action": ["Fortnite", "Call of Duty Mobile"],
+      "Adventure": ["Journey", "Genshin Impact"],
+      "Simulation": ["The Sims", "SimCity BuildIt"],
+      "Role Playing": ["Undertale", "Stardew Valley"],
+      "Strategy": ["Clash Royale", "Plague Inc"],
+      "Casual": ["Subway Surfers", "Candy Crush"],
+      "Arcade": ["Among Us", "Fall Guys"],
+      "Racing": ["Asphalt 9", "Mario Kart Tour"]
+    };
+
+    document.getElementById("genreTitle").innerText = topGenre.toUpperCase();
+    document.getElementById("genreTagline").innerText = `${genreTaglines[topGenre]}`;
+    document.getElementById("genreGames").innerText = `- ${genreGames[topGenre].join("\n- ")}`;
+    resultCard.style.display = "block";
+    downloadBtn.style.display = "block";
+    retryBtn.style.display = "block";
+    quizForm.style.display = "none";
+  };
+downloadBtn.onclick = () => {
+  const clone = resultCard.cloneNode(true);
+
+  // Move off-screen
+  clone.style.position = 'fixed';
+  clone.style.top = '-3000px';
+  clone.style.left = '0';
+  clone.style.display = 'block';
+  clone.style.width = '650px';
+  clone.style.height = 'auto';
+  clone.style.margin = '0';
+  clone.style.padding = '2.5rem 2rem';
+  clone.style.border = 'none';
+  clone.style.boxShadow = '0 0 25px rgba(0,0,0,0.3), inset 0 0 10px rgba(255,255,255,0.05)';
+  clone.style.boxSizing = 'border-box';
+  clone.style.borderRadius = '20px';
+  clone.style.background = 'transparent'; // transparent, background drawn on canvas
+
+  // Ensure watermark shows
+  const watermark = clone.querySelector('.watermark');
+  if (watermark) {
+    watermark.style.display = 'block';
+    watermark.style.color = 'rgba(138,43,226,0.12)';
+    watermark.style.textShadow = 'none';
+  }
+
+  document.body.appendChild(clone);
+
+  html2canvas(clone, { scale: 3, backgroundColor: null, useCORS: true }).then(cardCanvas => {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    const width = cardCanvas.width;
+    const height = cardCanvas.height;
+    canvas.width = width;
+    canvas.height = height;
+
+    // 1️⃣ Dark gradient background
+    const grad = ctx.createLinearGradient(0, 0, width, height);
+    grad.addColorStop(0, '#0f0c29');
+    grad.addColorStop(0.5, '#302b63');
+    grad.addColorStop(1, '#24243e');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, width, height);
+
+    // 2️⃣ Horizontal + Vertical grid pattern
+    ctx.strokeStyle = 'rgba(255,255,255,0.06)';
+    ctx.lineWidth = 2;
+
+    for(let y = 0; y < height; y += 40) {
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(width, y);
+      ctx.stroke();
+    }
+    for(let x = 0; x < width; x += 40) {
+      ctx.beginPath();
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, height);
+      ctx.stroke();
+    }
+
+// 3️⃣ Two large diagonal circles (home color with watermark opacity)
+ctx.lineWidth = 3;
+ctx.strokeStyle = 'rgba(138,43,226,0.12)'; // home color with watermark opacity
+const circleRadius = 150;
+const positions = [
+  [width * 0.25, height * 0.25], // shifted more to top-left
+  [width * 0.75, height * 0.75]  // shifted more to bottom-right
+];
+positions.forEach(pos => {
+  ctx.beginPath();
+  ctx.arc(pos[0], pos[1], circleRadius, 0, Math.PI * 2);
+  ctx.stroke();
+});
+
+    // 4️⃣ Draw the card on top
+    ctx.drawImage(cardCanvas, 0, 0);
+
+    // 5️⃣ Trigger download
+    const link = document.createElement('a');
+    link.href = canvas.toDataURL('image/png');
+    link.download = 'gaming-badge.png';
+    link.click();
+
+    document.body.removeChild(clone);
+  }).catch(err => {
+    console.error('Failed to capture badge:', err);
+    alert('Failed to capture badge. Try again.');
+    document.body.removeChild(clone);
+  });
+};
+
+   retryBtn.onclick = () => {
+    location.reload();
+  };
+</script> 
 </body>
 </html>

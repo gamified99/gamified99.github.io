@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Gamified - Impact</title>
+  <title>Gamified | Impact</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&family=Chakra+Petch:wght@400;700&display=swap" rel="stylesheet" />
-<link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <style>
     :root {
       --bg: #0a0a0a;
@@ -13,8 +13,6 @@
       --secondary: #ba55d3;
       --text: #f0f0f0;
       --card: #141414;
-
-      /* Section colors */
       --impact-color: #ff3cac;
       --analysis-color: #38bdf8;
       --economy-color: #f97316;
@@ -74,7 +72,6 @@
       color: inherit;
     }
 
-    /* Navigation colors */
     nav ul li.home > a { color: var(--primary); }
     nav ul li.impact > a { color: var(--impact-color); }
     nav ul li.analysis > a { color: var(--analysis-color); }
@@ -82,15 +79,15 @@
     nav ul li.strategy > a { color: var(--strategy-color); }
     nav ul li.team > a { color: var(--team-color); }
 
-    /* Active tab underline */
     nav ul li.active > a {
       border-bottom: 2px solid currentColor;
       font-weight: 900;
     }
-nav ul li a:hover {
-  color: var(--impact-color);
-}
-    /* Dropdown Menu */
+
+    nav ul li a:hover {
+      color: var(--impact-color);
+    }
+
     nav ul li ul {
       display: none;
       position: absolute;
@@ -129,7 +126,6 @@ nav ul li a:hover {
       filter: brightness(120%);
     }
 
-    /* Page hero section */
     .hero {
       text-align: center;
       padding: 6rem 1rem 2rem;
@@ -185,12 +181,109 @@ nav ul li a:hover {
       border-top: 1px solid #222;
     }
 
-    @media (max-width: 640px) {
-      nav ul {
-        flex-wrap: wrap;
-        gap: 1rem;
-      }
+    .echo-container {
+      background: rgba(255, 60, 172, 0.06);
+      border: 1px solid rgba(255, 60, 172, 0.2);
+      border-radius: 24px;
+      padding: 40px 20px;
+      margin: 40px auto;
+      max-width: 95%;
+      box-shadow: 0 0 20px rgba(255, 60, 172, 0.1);
+      backdrop-filter: blur(4px);
     }
+
+    .section-title {
+      font-size: 48px;
+      font-weight: bold;
+      color: var(--impact-color);
+      margin: 40px 0 20px;
+      text-align: center;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .form-container {
+      background-color: #121a2f;
+      border: 1px solid #ff3cac88;
+      border-radius: 16px;
+      padding: 20px;
+      max-width: 600px;
+      width: 90%;
+      margin: 0 auto 40px;
+      box-shadow: 0 0 10px #ff3cac33;
+    }
+
+    .form-container h2 {
+      color: var(--impact-color);
+      font-weight: 800;
+      font-size: 22px;
+      margin-top: 0;
+    }
+
+    .form-container input,
+    .form-container textarea,
+    .form-container button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+    }
+
+    .form-container input,
+    .form-container textarea {
+      background-color: #0d111f;
+      color: #fff;
+      border: 1px solid #ff3cac55;
+    }
+
+    .form-container button {
+      background-color: var(--impact-color);
+      color: #000;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background 0.3s;
+    }
+
+    .form-container button:hover {
+      background-color: #e32a93;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+      padding: 20px 40px 60px;
+      max-width: 100%;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: linear-gradient(145deg, #162037, #10192b);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 0 14px rgba(255, 60, 172, 0.12);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid var(--impact-color);
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 24px rgba(255, 60, 172, 0.3);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: var(--impact-color);
+      font-size: 18px;
+    }
+
+    .card p {
+      font-size: 16px;
+      line-height: 1.4;
+    }
+
   </style>
 </head>
 <body>
@@ -229,23 +322,123 @@ nav ul li a:hover {
   </nav>
 </header>
 
+
 <section class="hero">
   <h2>Impact Section</h2>
   <p>Discover how games empower communities, spark creativity, and inspire young creators to build and share globally.</p>
 </section>
 
 <section class="game-cards">
-  <a href="impact/fortnite.html">
-    <img src="fortnite.png" alt="Fortnite Impact" />
-  </a>
-  <a href="impact/valorant.html">
-    <img src="valorant.png" alt="Valorant Impact" />
-  </a>
+  <a href="impact/fortnite.html"><img src="fortnite.png" alt="Fortnite Impact" /></a>
+  <a href="impact/valorant.html"><img src="valorant.png" alt="Valorant Impact" /></a>
 </section>
+
+
+<!-- Echoes of Play -->
+<section class="story-wall">
+  <div class="echo-container">
+    <div class="section-title">Echoes of Play</div>
+    <div class="grid-container" id="storyGrid"></div>
+  </div>
+</section>
+
+<script>
+const stories = [
+  { title: "Minecraft was my safe place", text: "Building in silence gave me back control in a chaotic world." },
+  { title: "Rocket League cleared my head", text: "Timed matches helped me compartmentalize real stress." },
+  { title: "Zelda healed my overthinking", text: "Exploration replaced my constant racing thoughts." },
+  { title: "Gaming made my dorm feel like home", text: "Online worlds gave me friends before I had any in college." },
+  { title: "Animal Crossing calmed my anxiety", text: "Every morning routine helped replace panic with peace." },
+  { title: "I found rhythm in Beat Saber", text: "It gave my body and mind a pattern to follow." },
+  { title: "Valorant kept me grounded", text: "One match at a time, I stayed present when everything else spun." },
+  { title: "I healed through pixels", text: "Even when I couldn’t speak, my character kept walking." },
+  { title: "FIFA gave me normalcy", text: "I could lose a match, but still feel like myself again." },
+  { title: "Stardew gave me purpose", text: "A virtual crop was more nurturing than anything real that week." },
+
+  { title: "Call of Duty became my lifeline", text: "Squad nights helped me feel included and needed." },
+  { title: "I escaped through Red Dead", text: "Being a cowboy helped me face my real-life fear." },
+  { title: "Fortnite taught me focus", text: "Concentrating on builds kept intrusive thoughts away." },
+  { title: "Celeste mirrored my healing", text: "Each climb felt like me proving I could keep going." },
+  { title: "Gaming helped me regulate emotions", text: "Losing made me reflect rather than explode." },
+  { title: "Among Us made me laugh again", text: "For the first time in weeks, I smiled without trying." },
+  { title: "Portal made me feel clever", text: "Each level reminded me I wasn’t broken mentally." },
+  { title: "Mobile games helped during recovery", text: "Candy Crush and Clash of Clans were small joys in hospital days." },
+  { title: "I rebuilt myself in Terraria", text: "It gave me tiny wins when life had none." },
+  { title: "Genshin helped me feel seen", text: "The vastness made my real-world loneliness feel less scary." },
+
+  { title: "I slept better after cozy gaming", text: "Winding down with chill games fixed my cycle." },
+  { title: "Gaming gave me quiet control", text: "Something about planning a Sim family calmed me deeply." },
+  { title: "Silent games healed loud thoughts", text: "Games without dialogue felt like meditation." },
+  { title: "Multiplayer made me social again", text: "Even one word in chat was a step forward." },
+  { title: "I started journaling after Life is Strange", text: "It inspired me to untangle my own story." },
+  { title: "I faced grief through Spiritfarer", text: "It didn’t erase pain, but it held space for it." },
+  { title: "Halo taught me teamwork", text: "It reminded me I wasn’t supposed to go solo always." },
+  { title: "VR made me feel alive", text: "Moving my arms in space gave me energy to face my day." },
+  { title: "Racing games calmed my mind", text: "The repetition of laps soothed my spirals." },
+  { title: "Open world meant open mind", text: "Skyrim let me wander when I felt mentally trapped." },
+
+  { title: "Puzzle games trained my focus", text: "Solving patterns became my therapy." },
+  { title: "Wii Sports got me moving", text: "It was the first time I broke a sweat in weeks." },
+  { title: "Fall Guys brought back laughter", text: "I didn’t care if I won — I was having fun again." },
+  { title: "Slime Rancher softened my moods", text: "The colors, sounds, everything made me smile." },
+  { title: "Gaming gave me daily structure", text: "Log-in rewards became a reason to start the day." },
+  { title: "I found friends through clan battles", text: "We weren’t close, but I felt part of something." },
+  { title: "I stopped doomscrolling", text: "Replaced late-night spirals with chill games." },
+  { title: "Games distracted me from panic", text: "Even five minutes helped reset my body." },
+  { title: "Retro games reconnected me", text: "Old cartridges brought memories I needed." },
+  { title: "Playing again reminded me of joy", text: "For a while, I forgot how fun fun could be." },
+
+  { title: "Horror games helped me face fear", text: "What scared me virtually made reality easier." },
+  { title: "Simulation gave me small wins", text: "Upgrading a house in-game felt like building confidence." },
+  { title: "Gaming helped my burnout", text: "I stopped working just to enjoy something again." },
+  { title: "Split-screen meant connection", text: "Even quietly sharing a game mattered." },
+  { title: "Gaming during recovery helped", text: "My hands were weak, but I kept playing." },
+  { title: "Solo campaigns built resilience", text: "Progress reminded me I'm capable." },
+  { title: "RPGs made me reflect", text: "I learned how I made choices even in fake worlds." },
+  { title: "Tiny indie games inspired me", text: "They showed me art can be small and powerful." },
+  { title: "Gaming eased winter blues", text: "In dark months, bright screens helped." },
+  { title: "I used gaming as breathing space", text: "Pause menu felt like life’s pause too." },
+
+  { title: "Gaming helped when I was stuck", text: "It gave me movement without leaving home." },
+  { title: "Digital farming soothed my brain", text: "Harvesting felt like regaining rhythm." },
+  { title: "Rogue-likes made me tougher", text: "Failure in games made real failure sting less." },
+  { title: "I healed through avatar creation", text: "Making someone whole helped me rebuild me." },
+  { title: "Gaming kept me anchored", text: "No matter the day, my character waited for me." },
+  { title: "I explored worlds when I couldn’t go out", text: "Gaming became my travel." },
+  { title: "Healing came through narrative", text: "Storytelling gave my own pain a parallel." },
+  { title: "Gaming gave me grounding rituals", text: "Turning on the console was step one." },
+  { title: "Pixel art brought peace", text: "The beauty in simplicity eased my mind." },
+
+  { title: "Tactics games calmed chaos", text: "They taught me to slow down and think clearly." },
+  { title: "Visual novels gave me closure", text: "Even fiction can answer real emotion." },
+  { title: "Gaming gave me rhythm again", text: "I danced with buttons when I couldn't with life." },
+  { title: "Daily quests meant daily hope", text: "Even one small win helped me start." },
+  { title: "Gaming stopped my spirals", text: "Focusing helped interrupt the loop." },
+  { title: "Idle games gave me dopamine", text: "Watching progress was healing in its own way." },
+  { title: "Narrative games gave me clarity", text: "Characters made me realize I wasn't alone." },
+  { title: "Games reminded me to keep going", text: "Each checkpoint felt like a milestone in healing." },
+  { title: "Gaming helped me feel in control", text: "When nothing else obeyed, games listened." },
+  { title: "I healed through mechanics", text: "Leveling up wasn't just in-game." }
+];
+  const container = document.getElementById("storyGrid");
+  function renderStories() {
+    container.innerHTML = "";
+    stories.forEach(story => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `<h3>${story.title}</h3><p>${story.text}</p>`;
+      container.appendChild(card);
+    });
+  }
+
+
+  renderStories();
+</script>
 
 <footer>
   &copy; 2025 Gamified. Built by players, for players.
 </footer>
+
 
 </body>
 </html>

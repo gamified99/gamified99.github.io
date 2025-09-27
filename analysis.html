@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Gamified - Analysis</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gamified | Analysis</title>
+
+  <!-- Fonts & vis-timeline CSS -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&family=Chakra+Petch:wght@400;700&display=swap" rel="stylesheet" />
-<link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link href="https://unpkg.com/vis-timeline@latest/styles/vis-timeline-graph2d.min.css" rel="stylesheet" />
+
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
   <style>
     :root {
       --bg: #0a0a0a;
@@ -21,28 +26,28 @@
       --team-color: #60a5fa;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    /* -------------------------
+       Analysis page base styles
+       ------------------------- */
+    * { margin:0; padding:0; box-sizing:border-box; }
     body {
       font-family: 'Chakra Petch', sans-serif;
       background: url('background.png') center/cover no-repeat fixed;
       color: var(--text);
       min-height: 100vh;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
     }
 
     header {
-      background: rgba(10, 10, 10, 0.95);
+      background: rgba(10,10,10,0.95);
       padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:sticky;
+      top:0;
+      z-index:1000;
     }
 
     .logo {
@@ -122,125 +127,402 @@
     nav ul li ul li a:hover {
       filter: brightness(120%);
     }
-nav ul li a:hover {
-  color: var(--analysis-color);
-}
-    .hero {
-      text-align: center;
-      padding: 6rem 1rem 2rem;
-      background: rgba(10, 10, 10, 0.6);
-    }
-
-    .hero h2 {
-      font-size: 2.5rem;
-      font-family: 'Orbitron', sans-serif;
+    nav ul li a:hover {
       color: var(--analysis-color);
-      margin-bottom: 1rem;
     }
 
-    .hero p {
-      font-size: 1.1rem;
-      max-width: 700px;
-      margin: 0 auto;
-      color: #ccc;
+    .hero {
+      text-align:center;
+      padding: 6rem 1rem 2rem;
+      background: rgba(10,10,10,0.6);
     }
+    .hero h2 {
+      font-size:2.5rem; font-family:'Orbitron',sans-serif; color:var(--analysis-color); margin-bottom:1rem;
+    }
+    .hero p { color:#ccc; max-width:700px; margin:0 auto; font-size:1.05rem; }
 
     .game-cards {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      padding: 3rem 1rem;
-      flex-wrap: wrap;
+      display:flex; justify-content:center; gap:2rem; padding:3rem 1rem; flex-wrap:wrap;
     }
-
     .game-cards a {
-      display: block;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-      transition: transform 0.3s;
-      max-width: 300px;
+      display:block; border-radius:12px; overflow:hidden;
+      box-shadow:0 0 10px rgba(255,255,255,0.06); transition:transform .25s; max-width:300px;
     }
-
-    .game-cards a:hover {
-      transform: scale(1.05);
-    }
-
-    .game-cards img {
-      width: 100%;
-      display: block;
-    }
+    .game-cards a:hover { transform:scale(1.05); }
+    .game-cards img { width:100%; display:block; }
 
     footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      color: #777;
-      background-color: rgba(10, 10, 10, 0.85);
-      border-top: 1px solid #222;
+      text-align:center; padding:2rem; font-size:.9rem; color:#777;
+      background-color: rgba(10,10,10,0.85); border-top:1px solid #222;
+      margin-top:2rem;
     }
 
-    @media (max-width: 640px) {
-      nav ul {
-        flex-wrap: wrap;
-        gap: 1rem;
-      }
+    /* -------------------------
+       Timeline specific styles
+       ------------------------- */
+    .header-container {
+      background: rgba(15,23,42,0.9);
+      backdrop-filter: blur(10px);
+      border-radius: 1rem;
+      padding: 2rem;
+      margin: 1.5rem auto 0.75rem;
+      max-width:1200px;
+      border: 1px solid rgba(100,255,218,0.08);
+      text-align:center;
     }
+    .header-container p { color:#cbd5e1; margin-top:0.5rem; }
+
+    .legend { display:flex; flex-wrap:wrap; gap:0.75rem; justify-content:center; margin-top:1rem; }
+    .legend-item { display:flex; align-items:center; gap:.5rem; padding:.4rem .7rem; border-radius:.6rem; background:rgba(255,255,255,0.04); color:#e6eef6; font-size:.95rem; }
+    .legend-color { width:14px; height:14px; border-radius:3px; border:1px solid rgba(255,255,255,0.15); }
+
+    /* timeline container */
+    #timeline {
+      background: rgba(15,23,42,0.8);
+      border-radius: 1rem;
+      box-shadow: 0 10px 40px rgba(10,20,30,0.55), inset 0 0 30px rgba(0,0,0,0.25);
+      margin: 1.25rem auto 2rem;
+      max-width: 1200px;
+      height: 600px;
+      border: 1px solid rgba(100,255,218,0.06);
+      overflow: hidden;
+    }
+
+    /* fallback CSS — will be overridden/ensured by JS (JS is the reliable step) */
+    .vis-timeline .vis-time-axis text {
+      fill: #ffffff !important;
+      font-weight: 800 !important;
+      font-size: 14px !important;
+      stroke: #000000 !important;
+      stroke-width: 1px !important;
+      paint-order: stroke !important;
+    }
+
+    /* baseline item style */
+    .vis-item {
+      border-radius:8px;
+      padding:6px 10px;
+      font-weight:700;
+      font-size:12px;
+      border:1px solid rgba(255,255,255,0.06);
+      box-shadow:0 2px 8px rgba(0,0,0,0.3);
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+    .vis-item:hover { transform:scale(1.03); z-index:2000; box-shadow:0 8px 20px rgba(0,0,0,0.6); }
+    .vis-item.vis-selected { outline:3px solid rgba(99,102,241,0.35); transform:scale(1.05); }
+
+    /* ---- Genre colors applied to both legend squares and timeline items ---- */
+    .vis-item.fps, .legend-color.fps { background: linear-gradient(135deg,#ef4444,#dc2626); color:#fff; }
+    .vis-item.rpg, .legend-color.rpg { background: linear-gradient(135deg,#8b5cf6,#7c3aed); color:#fff; }
+    .vis-item.sandbox, .legend-color.sandbox { background: linear-gradient(135deg,#f59e0b,#d97706); color:#fff; }
+    .vis-item.adventure, .legend-color.adventure { background: linear-gradient(135deg,#10b981,#059669); color:#fff; }
+    .vis-item.platformer, .legend-color.platformer { background: linear-gradient(135deg,#06b6d4,#0891b2); color:#fff; }
+    .vis-item.mobile, .legend-color.mobile { background: linear-gradient(135deg,#14b8a6,#0d9488); color:#fff; }
+    .vis-item.strategy, .legend-color.strategy { background: linear-gradient(135deg,#6366f1,#4f46e5); color:#fff; }
+    .vis-item.racing, .legend-color.racing { background: linear-gradient(135deg,#f97316,#ea580c); color:#fff; }
+    .vis-item.fighting, .legend-color.fighting { background: linear-gradient(135deg,#be123c,#9f1239); color:#fff; }
+    .vis-item.puzzle, .legend-color.puzzle { background: linear-gradient(135deg,#84cc16,#65a30d); color:#fff; }
+    .vis-item.mmo, .legend-color.mmo { background: linear-gradient(135deg,#a855f7,#9333ea); color:#fff; }
+    .vis-item.sports, .legend-color.sports { background: linear-gradient(135deg,#22c55e,#16a34a); color:#fff; }
+
+    /* responsiveness */
+    @media (max-width:960px) {
+      #timeline { max-width:95%; height:520px; }
+      .header-container { margin: 1rem; padding:1rem; }
+    }
+    @media (max-width:640px) {
+      .hero { padding:4rem 1rem 1.5rem; }
+      .hero h2 { font-size:1.8rem; }
+      #timeline { height:420px; }
+    }
+/* Force year labels on the timeline axis to be bright and visible */
+.vis-timeline .vis-time-axis .vis-major text {
+  fill: #ffffff !important;    /* white text */
+  opacity: 1 !important;       /* remove faintness */
+  font-weight: bold !important;
+  font-size: 18px !important;  /* make it more readable */
+}
+
   </style>
 </head>
+
 <body>
+  <!-- Analysis header/nav (unchanged) -->
+  <header>
+    <div class="logo">Gamified</div>
+    <nav>
+      <ul>
+        <li class="home"><a href="index.html">Home</a></li>
+        <li class="impact"><a href="impact.html">Impact</a>
+          <ul>
+            <li><a href="impact/valorant.html">Valorant</a></li>
+            <li><a href="impact/fortnite.html">Fortnite</a></li>
+          </ul>
+        </li>
+        <li class="analysis active"><a href="analysis.html">Analysis</a>
+          <ul>
+            <li><a href="analysis/valorant.html">Valorant</a></li>
+            <li><a href="analysis/fortnite.html">Fortnite</a></li>
+          </ul>
+        </li>
+        <li class="economy"><a href="economy.html">Economy</a>
+          <ul>
+            <li><a href="economy/valorant.html">Valorant</a></li>
+            <li><a href="economy/fortnite.html">Fortnite</a></li>
+          </ul>
+        </li>
+        <li class="strategy"><a href="strategy.html">Strategy</a>
+          <ul>
+            <li><a href="strategy/valorant.html">Valorant</a></li>
+            <li><a href="strategy/fortnite.html">Fortnite</a></li>
+          </ul>
+        </li>
+        <li class="team"><a href="team.html">Our Team</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<header>
-  <div class="logo">Gamified</div>
-  <nav>
-    <ul>
-      <li class="home"><a href="index.html">Home</a></li>
-      <li class="impact"><a href="impact.html">Impact</a>
-        <ul>
-          <li><a href="impact/valorant.html">Valorant</a></li>
-          <li><a href="impact/fortnite.html">Fortnite</a></li>
-        </ul>
-      </li>
-      <li class="analysis active"><a href="analysis.html">Analysis</a>
-        <ul>
-          <li><a href="analysis/valorant.html">Valorant</a></li>
-          <li><a href="analysis/fortnite.html">Fortnite</a></li>
-        </ul>
-      </li>
-      <li class="economy"><a href="economy.html">Economy</a>
-        <ul>
-          <li><a href="economy/valorant.html">Valorant</a></li>
-          <li><a href="economy/fortnite.html">Fortnite</a></li>
-        </ul>
-      </li>
-      <li class="strategy"><a href="strategy.html">Strategy</a>
-        <ul>
-          <li><a href="strategy/valorant.html">Valorant</a></li>
-          <li><a href="strategy/fortnite.html">Fortnite</a></li>
-        </ul>
-      </li>
-      <li class="team"><a href="team.html">Our Team</a></li>
-    </ul>
-  </nav>
-</header>
+  <!-- Hero -->
+  <section class="hero">
+    <h2>Analysis Section</h2>
+    <p>Dive deep into game mechanics, player behaviors, and tactical breakdowns that shape success in top titles.</p>
+  </section>
 
-<section class="hero">
-  <h2>Analysis Section</h2>
-  <p>Dive deep into game mechanics, player behaviors, and tactical breakdowns that shape success in top titles.</p>
-</section>
+  <!-- Game cards -->
+  <section class="game-cards">
+    <a href="analysis/fortnite.html"><img src="fortnite.png" alt="Fortnite Analysis" /></a>
+    <a href="analysis/valorant.html"><img src="valorant.png" alt="Valorant Analysis" /></a>
+  </section>
 
-<section class="game-cards">
-  <a href="analysis/fortnite.html">
-    <img src="fortnite.png" alt="Fortnite Analysis" />
-  </a>
-  <a href="analysis/valorant.html">
-    <img src="valorant.png" alt="Valorant Analysis" />
-  </a>
-</section>
+  <!-- Timeline header + legend -->
+  <div class="header-container" role="region" aria-label="Timeline header">
+    <h1 class="text-6xl font-extrabold" style="font-size:3rem; background:linear-gradient(90deg,#06b6d4,#7c3aed); -webkit-background-clip:text; color:#38bdf8;">
+      Timeline
+    </h1>
 
-<footer>
-  &copy; 2025 Gamified. Built by players, for players.
-</footer>
+    <div class="legend" aria-hidden="false" style="margin-top:1rem;">
+      <div class="legend-item"><div class="legend-color fps"></div><span>FPS</span></div>
+      <div class="legend-item"><div class="legend-color rpg"></div><span>RPG</span></div>
+      <div class="legend-item"><div class="legend-color strategy"></div><span>Strategy</span></div>
+      <div class="legend-item"><div class="legend-color adventure"></div><span>Adventure</span></div>
+      <div class="legend-item"><div class="legend-color platformer"></div><span>Platformer</span></div>
+      <div class="legend-item"><div class="legend-color racing"></div><span>Racing</span></div>
+      <div class="legend-item"><div class="legend-color fighting"></div><span>Fighting</span></div>
+      <div class="legend-item"><div class="legend-color puzzle"></div><span>Puzzle</span></div>
+      <div class="legend-item"><div class="legend-color sandbox"></div><span>Sandbox</span></div>
+      <div class="legend-item"><div class="legend-color mobile"></div><span>Mobile</span></div>
+      <div class="legend-item"><div class="legend-color mmo"></div><span>MMO</span></div>
+      <div class="legend-item"><div class="legend-color sports"></div><span>Sports</span></div>
+    </div>
+  </div>
 
+  <!-- Timeline container -->
+  <div id="timeline" aria-label="Gaming timeline"></div>
+
+  <!-- vis-timeline script (loaded before we run our init script) -->
+  <script src="https://unpkg.com/vis-timeline@latest/standalone/umd/vis-timeline-graph2d.min.js"></script>
+
+  <script>
+    // dataset (all 70 items)
+    const allItems = new vis.DataSet([
+      { id: 1, content: 'Pong', start: '1972-11-29', end: '1975-11-29', className: 'sports' },
+      { id: 2, content: 'Space Invaders', start: '1978-06-01', end: '1982-06-01', className: 'fps' },
+      { id: 3, content: 'Pac-Man', start: '1980-05-22', end: '1985-05-22', className: 'puzzle' },
+      { id: 4, content: 'Donkey Kong', start: '1981-07-09', end: '1985-07-09', className: 'platformer' },
+      { id: 5, content: 'Tetris', start: '1984-06-06', end: '2024-06-06', className: 'puzzle' },
+      { id: 6, content: 'Super Mario Bros.', start: '1985-09-13', end: '2024-09-13', className: 'platformer' },
+
+      { id: 7, content: 'Super Mario World', start: '1990-11-21', end: '1995-11-21', className: 'platformer' },
+      { id: 8, content: 'Sonic the Hedgehog', start: '1991-06-23', end: '1996-06-23', className: 'platformer' },
+      { id: 9, content: 'Street Fighter II', start: '1991-02-01', end: '1996-02-01', className: 'fighting' },
+      { id: 10, content: 'Mortal Kombat', start: '1992-10-08', end: '1997-10-08', className: 'fighting' },
+      { id: 11, content: 'DOOM', start: '1993-12-10', end: '1998-12-10', className: 'fps' },
+      { id: 12, content: 'Super Metroid', start: '1994-03-19', end: '1999-03-19', className: 'adventure' },
+      { id: 13, content: 'Final Fantasy VII', start: '1997-01-31', end: '2002-01-31', className: 'rpg' },
+      { id: 14, content: 'GoldenEye 007', start: '1997-08-25', end: '2002-08-25', className: 'fps' },
+      { id: 15, content: 'Half-Life', start: '1998-11-19', end: '2003-11-19', className: 'fps' },
+      { id: 16, content: 'The Legend of Zelda: Ocarina of Time', start: '1998-11-21', end: '2003-11-21', className: 'adventure' },
+      { id: 17, content: 'StarCraft', start: '1998-03-31', end: '2024-03-31', className: 'strategy' },
+
+      { id: 18, content: 'Counter-Strike', start: '2000-11-08', end: '2024-11-08', className: 'fps' },
+      { id: 19, content: 'The Sims', start: '2000-02-04', end: '2010-02-04', className: 'sandbox' },
+      { id: 20, content: 'Grand Theft Auto: Vice City', start: '2002-10-27', end: '2007-10-27', className: 'adventure' },
+      { id: 21, content: 'Halo: Combat Evolved', start: '2001-11-15', end: '2006-11-15', className: 'fps' },
+      { id: 22, content: 'World of Warcraft', start: '2004-11-23', end: '2024-11-23', className: 'mmo' },
+      { id: 23, content: 'Half-Life 2', start: '2004-11-16', end: '2009-11-16', className: 'fps' },
+      { id: 24, content: 'Guitar Hero', start: '2005-11-08', end: '2010-11-08', className: 'puzzle' },
+      { id: 25, content: 'Gears of War', start: '2006-11-07', end: '2011-11-07', className: 'fps' },
+      { id: 26, content: 'Roblox', start: '2006-09-01', end: '2024-09-01', className: 'sandbox' },
+
+      { id: 27, content: 'Call of Duty: Modern Warfare', start: '2007-11-05', end: '2012-11-05', className: 'fps' },
+      { id: 28, content: 'Portal', start: '2007-10-09', end: '2012-10-09', className: 'puzzle' },
+      { id: 29, content: 'Super Mario Galaxy', start: '2007-11-01', end: '2012-11-01', className: 'platformer' },
+      { id: 30, content: 'Minecraft', start: '2009-05-17', end: '2024-05-17', className: 'sandbox' },
+      { id: 31, content: 'Angry Birds', start: '2009-12-11', end: '2019-12-11', className: 'mobile' },
+      { id: 32, content: 'League of Legends', start: '2009-10-27', end: '2024-10-27', className: 'strategy' },
+      { id: 33, content: 'Red Dead Redemption', start: '2010-05-18', end: '2015-05-18', className: 'adventure' },
+      { id: 34, content: 'The Elder Scrolls V: Skyrim', start: '2011-11-11', end: '2024-11-11', className: 'rpg' },
+      { id: 35, content: 'Terraria', start: '2011-05-16', end: '2024-05-16', className: 'sandbox' },
+      { id: 36, content: 'Dark Souls', start: '2011-09-22', end: '2016-09-22', className: 'rpg' },
+      { id: 37, content: 'Clash of Clans', start: '2012-08-02', end: '2024-08-02', className: 'mobile' },
+      { id: 38, content: 'Grand Theft Auto V', start: '2013-09-17', end: '2024-09-17', className: 'adventure' },
+      { id: 39, content: 'The Last of Us', start: '2013-06-14', end: '2018-06-14', className: 'adventure' },
+      { id: 40, content: 'Destiny', start: '2014-09-09', end: '2019-09-09', className: 'fps' },
+      { id: 41, content: 'The Witcher 3: Wild Hunt', start: '2015-05-19', end: '2020-05-19', className: 'rpg' },
+
+      { id: 42, content: 'Overwatch', start: '2016-05-24', end: '2024-05-24', className: 'fps' },
+      { id: 43, content: 'Pokémon GO', start: '2016-07-06', end: '2024-07-06', className: 'mobile' },
+      { id: 44, content: 'The Legend of Zelda: Breath of the Wild', start: '2017-03-03', end: '2024-03-03', className: 'adventure' },
+      { id: 45, content: 'Fortnite Battle Royale', start: '2017-07-21', end: '2024-07-21', className: 'fps' },
+      { id: 46, content: 'Hollow Knight', start: '2017-02-24', end: '2022-02-24', className: 'platformer' },
+      { id: 47, content: 'PlayerUnknown\'s Battlegrounds', start: '2017-03-23', end: '2022-03-23', className: 'fps' },
+      { id: 48, content: 'Super Mario Odyssey', start: '2017-10-27', end: '2022-10-27', className: 'platformer' },
+      { id: 49, content: 'God of War (2018)', start: '2018-04-20', end: '2023-04-20', className: 'adventure' },
+      { id: 50, content: 'Red Dead Redemption 2', start: '2018-10-26', end: '2023-10-26', className: 'adventure' },
+      { id: 51, content: 'Among Us', start: '2018-06-15', end: '2024-06-15', className: 'strategy' },
+      { id: 52, content: 'Super Smash Bros. Ultimate', start: '2018-12-07', end: '2024-12-07', className: 'fighting' },
+      { id: 53, content: 'Celeste', start: '2018-01-25', end: '2023-01-25', className: 'platformer' },
+      { id: 54, content: 'Cyberpunk 2077', start: '2020-12-10', end: '2024-12-10', className: 'rpg' },
+      { id: 55, content: 'Valorant', start: '2020-06-02', end: '2024-06-02', className: 'fps' },
+      { id: 56, content: 'Fall Guys', start: '2020-08-04', end: '2024-08-04', className: 'platformer' },
+      { id: 57, content: 'Genshin Impact', start: '2020-09-28', end: '2024-09-28', className: 'rpg' },
+      { id: 58, content: 'It Takes Two', start: '2021-03-26', end: '2024-03-26', className: 'adventure' },
+      { id: 59, content: 'Elden Ring', start: '2022-02-25', end: '2024-02-25', className: 'rpg' },
+      { id: 60, content: 'Wordle', start: '2021-10-01', end: '2024-10-01', className: 'puzzle' },
+
+      { id: 61, content: 'Gran Turismo', start: '1997-12-23', end: '2002-12-23', className: 'racing' },
+      { id: 62, content: 'Need for Speed: Underground', start: '2003-11-17', end: '2008-11-17', className: 'racing' },
+      { id: 63, content: 'Mario Kart Wii', start: '2008-04-10', end: '2013-04-10', className: 'racing' },
+      { id: 64, content: 'Forza Horizon', start: '2012-10-23', end: '2024-10-23', className: 'racing' },
+
+      { id: 65, content: 'Age of Empires II', start: '1999-09-30', end: '2024-09-30', className: 'strategy' },
+      { id: 66, content: 'Civilization VI', start: '2016-10-21', end: '2024-10-21', className: 'strategy' },
+      { id: 67, content: 'Chess.com', start: '2007-01-01', end: '2024-01-01', className: 'strategy' },
+
+      { id: 68, content: 'FIFA 98', start: '1997-06-01', end: '2002-06-01', className: 'sports' },
+      { id: 69, content: 'NBA 2K', start: '1999-11-10', end: '2024-11-10', className: 'sports' },
+      { id: 70, content: 'Rocket League', start: '2015-07-07', end: '2024-07-07', className: 'sports' }
+    ]);
+
+    // timeline options
+    const options = {
+      width: '100%',
+      height: '100%',
+      stack: true,
+      stackSubgroups: true,
+      margin: { item: { horizontal: 10, vertical: 8 } },
+      showMajorLabels: true,
+      showCurrentTime: true,
+      orientation: 'top',
+      type: 'range',
+      tooltip: {
+        followMouse: true,
+        template: function (item) {
+          if (!item) return '';
+          const startDate = item.start ? new Date(item.start).toDateString() : 'Unknown';
+          const endDate = item.end ? new Date(item.end).toDateString() : 'Ongoing';
+          const duration = item.end ?
+            Math.round((new Date(item.end) - new Date(item.start)) / (1000 * 60 * 60 * 24 * 365.25)) :
+            Math.round((Date.now() - new Date(item.start)) / (1000 * 60 * 60 * 24 * 365.25));
+          return `
+            <div style="padding:10px;background:rgba(15,23,42,0.95);border-radius:8px;border:1px solid rgba(100,255,218,0.12);color:#e2e8f0;">
+              <strong style="color:#64ffda;font-size:14px;">${item.content}</strong><br/>
+              <span style="color:#cbd5e1;">Released: ${startDate}</span><br/>
+              <span style="color:#cbd5e1;">Peak Era: ${endDate}</span><br/>
+              <span style="color:#a78bfa;">Duration: ~${duration} years</span>
+            </div>
+          `;
+        }
+      },
+      zoomMin: 1000 * 60 * 60 * 24 * 365,
+      zoomMax: 1000 * 60 * 60 * 24 * 365 * 60,
+      maxHeight: 600,
+      minHeight: 420,
+      verticalScroll: true,
+      horizontalScroll: true,
+      selectable: true,
+      multiselect: false,
+      editable: false
+    };
+
+    // create and set timeline
+    const container = document.getElementById('timeline');
+    const timeline = new vis.Timeline(container);
+    timeline.setOptions(options);
+    timeline.setItems(allItems);
+
+    // initial window
+    timeline.setWindow(new Date(1970,0,1), new Date(2027,11,31), { animation:true });
+
+    // --- RELIABLE axis styling: style axis labels directly and keep them styled when vis re-draws ---
+    function styleAxisLabels() {
+      try {
+        // target all svg text/tspan nodes inside the timeline
+        const svgTexts = container.querySelectorAll('svg text, svg tspan');
+        svgTexts.forEach(node => {
+          const txt = (node.textContent || '').trim();
+          // only style 4-digit years (1900-2099) — this keeps months / small labels untouched
+          if (/\b(19|20)\d{2}\b/.test(txt)) {
+            // set SVG attributes (these override most stylesheet rules)
+            node.setAttribute('fill', '#ffffff');
+            node.setAttribute('font-weight', '900');
+            node.setAttribute('font-size', '16px');
+            node.setAttribute('stroke', '#000000');
+            node.setAttribute('stroke-width', '2');
+            // also set inline style for extra browsers
+            node.style.paintOrder = 'stroke';
+            node.style.fontFamily = "'Orbitron', sans-serif";
+            node.style.textShadow = '0 0 2px rgba(0,0,0,0.8)';
+          }
+        });
+      } catch (e) {
+        // fail silently if something unexpected happens
+        // (we'll try again on the next mutation or event)
+      }
+    }
+
+    // call once now (SVG might not be present instantly — a short retry loop below will ensure)
+    styleAxisLabels();
+
+    // ensure styling after timeline redraws / range changes
+    timeline.on('rangechanged', styleAxisLabels);
+    timeline.on('changed', styleAxisLabels);
+
+    // watch the container for new SVG children (vis-timeline often re-renders axis during interactions)
+    const observer = new MutationObserver((mutations) => {
+      // whenever anything changes under #timeline, re-apply the style
+      styleAxisLabels();
+    });
+    // start observing (subtree true picks up internal redraws)
+    observer.observe(container, { childList: true, subtree: true });
+
+    // also retry shortly if svg wasn't there immediately
+    (function waitForSVG(retries = 0) {
+      if (retries > 20) return;
+      const svg = container.querySelector('svg');
+      if (!svg) {
+        setTimeout(() => waitForSVG(retries + 1), 120);
+      } else {
+        // once svg is present, ensure labels are styled
+        styleAxisLabels();
+      }
+    })();
+
+    // interactions
+    timeline.on('select', function(event){
+      if (event.items && event.items.length) {
+        const sel = allItems.get(event.items[0]);
+        console.log('Selected:', sel.content);
+      }
+    });
+
+    // ensure redraw on resize
+    window.addEventListener('resize', () => {
+      timeline.redraw();
+      styleAxisLabels();
+    });
+  </script>
+
+  <footer>&copy; 2025 Gamified. Built by players, for players.</footer>
 </body>
 </html>
