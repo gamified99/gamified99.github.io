@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Fortnite Economy</title>
+  <title>FNAF Analysis</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&family=Chakra+Petch:wght@400;700&display=swap" rel="stylesheet" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <style>
     :root {
       --bg: #0a0a0a;
-      --primary: #8a2be2;
+      --primary: #8a2be2; /* purple */
       --impact-color: #ff3cac;
       --analysis-color: #38bdf8;
       --economy-color: #f97316;
@@ -22,7 +22,7 @@
     }
     body {
       font-family: 'Chakra Petch', sans-serif;
-      background: url('fortnite.jpg') center/cover no-repeat fixed;
+      background: url('fnaf.jpg') center/cover no-repeat fixed;
       color: var(--text);
       min-height: 100vh;
     }
@@ -102,73 +102,48 @@
     }
     nav ul li a:hover,
     nav ul li ul li a:hover {
-      color: var(--economy-color);
+      color: var(--analysis-color); /* hover color blue */
     }
-    .economy-box {
+    .analysis-box {
       padding: 2rem 3rem;
       max-width: 900px;
       margin: 3rem auto 5rem;
-      background: rgba(0, 0, 0, 0.7); /* translucent black */
-      border: 2px solid var(--economy-color);
+      background: rgba(0, 0, 0, 0.7);
+      border: 2px solid var(--analysis-color);
       border-radius: 16px;
-      box-shadow: 0 0 25px rgba(255, 165, 0, 0.6);
+      box-shadow: 0 0 25px rgba(30, 144, 255, 0.6);
       color: var(--text);
       line-height: 1.6;
     }
-    .economy-box h1 {
+    .analysis-box h1 {
       font-family: 'Orbitron', sans-serif;
-      color: var(--economy-color);
+      color: var(--analysis-color);
       font-size: 2.8rem;
       margin-bottom: 1.5rem;
       text-align: center;
       text-transform: uppercase;
     }
-    .economy-box h3 {
+    .analysis-box h3 {
       font-family: 'Orbitron', sans-serif;
-      color: var(--economy-color);
+      color: var(--analysis-color);
       font-size: 1.6rem;
       margin: 2rem 0 0.8rem;
       text-transform: uppercase;
       letter-spacing: 1.5px;
       padding-bottom: 0.3rem;
-      /* border-bottom removed */
     }
-    .economy-box p {
+    .analysis-box p,
+    .analysis-box ul {
       margin-bottom: 1rem;
       font-weight: 500;
     }
-    .economy-box ul {
+    .analysis-box ul {
       margin-left: 1.7rem;
-      margin-bottom: 1.5rem;
       list-style-type: disc;
       font-weight: 600;
     }
-    .economy-box ul li {
+    .analysis-box ul li {
       margin-bottom: 0.5rem;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1.5rem 0;
-      font-weight: 600;
-      background: #111;
-      border-radius: 12px;
-      overflow: hidden;
-    }
-    th, td {
-      padding: 12px 15px;
-      text-align: left;
-      border-bottom: 1px solid #333;
-      color: var(--text);
-    }
-    th {
-      background-color: var(--economy-color);
-      color: #000;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    tbody tr:hover {
-      background-color: rgba(255, 165, 0, 0.15);
     }
     footer {
       text-align: center;
@@ -183,18 +158,15 @@
         flex-wrap: wrap;
         gap: 1rem;
       }
-      .economy-box {
+      .analysis-box {
         padding: 1.5rem 1.5rem;
         margin: 2rem 1rem 4rem;
       }
-      .economy-box h1 {
+      .analysis-box h1 {
         font-size: 2rem;
       }
-      .economy-box h3 {
+      .analysis-box h3 {
         font-size: 1.3rem;
-      }
-      table, th, td {
-        font-size: 0.85rem;
       }
     }
   </style>
@@ -203,28 +175,28 @@
 
 <header>
   <div class="logo">Gamified</div>
- <nav>
+<nav>
   <ul>
     <li class="home"><a href="../index.html">Home</a></li>
     <li class="impact"><a href="../impact.html">Impact</a>
       <ul>
         <li><a href="../impact/valorant.html">Valorant</a></li>
         <li><a href="../impact/fortnite.html">Fortnite</a></li>
-        <li><a href="../impact/fnaf.html">Fortnite</a></li>
+        <li><a href="../impact/fnaf.html">FNAF</a></li>
       </ul>
     </li>
-    <li class="analysis"><a href="../analysis.html">Analysis</a>
-      <ul>
-        <li><a href="../analysis/valorant.html">Valorant</a></li>
-        <li><a href="../analysis/fortnite.html">Fortnite</a></li>
-        <li><a href="../analysis/fnaf.html">FNAF</a></li>
-      </ul>
-    </li>
-    <li class="economy active"><a href="../economy.html">Economy</a>
+    <li class="analysis active"><a href="../analysis.html">Analysis</a>
       <ul>
         <li><a href="valorant.html">Valorant</a></li>
         <li><a href="fortnite.html">Fortnite</a></li>
         <li><a href="fnaf.html">FNAF</a></li>
+      </ul>
+    </li>
+    <li class="economy"><a href="../economy.html">Economy</a>
+      <ul>
+        <li><a href="../economy/valorant.html">Valorant</a></li>
+        <li><a href="../economy/fortnite.html">Fortnite</a></li>
+        <li><a href="../economy/fnaf.html">FNAF</a></li>
       </ul>
     </li>
     <li class="strategy"><a href="../strategy.html">Strategy</a>
@@ -240,87 +212,32 @@
 
 </header>
 
-<div class="economy-box">
-  <h1>Fortnite Economy</h1>
+<div class="analysis-box">
+  <h1>FNAF Analysis</h1>
 
-  <h3>Overview</h3>
-  <p>
-    Fortnite’s economy is primarily centered around its in-game currency called V-Bucks, which players can acquire either through real-money purchases or by earning them via gameplay, such as completing challenges or progressing through the Battle Pass.
-  </p>
+<h3>Core gameplay</h3>
+<p>The central experience in most Five Nights at Freddys titles relies on observation, tension, and resource management. Players are placed in confined spaces such as security rooms, bedrooms, or monitoring stations. The challenge comes from watching security cameras, reacting quickly to threats, and balancing limited resources like electricity, ventilation, or audio systems. Simple surveillance tasks become high pressure strategic encounters where failure arrives in an instant through a jumpscare.</p>
 
-  <h3>In-Game Currency and Monetization</h3>
-  <p>V-Bucks serve as the main currency within Fortnite. They are used to purchase:</p>
-  <ul>
-    <li><strong>Battle Passes:</strong> Seasonal progression passes unlocking exclusive content.</li>
-    <li><strong>Cosmetic Items:</strong> Skins, emotes, pickaxes, back bling, gliders, and wraps.</li>
-    <li><strong>Limited Time Offers:</strong> Bundles and exclusive items available for a short period.</li>
-  </ul>
 
-  <h3>Battle Pass Economics</h3>
-  <p>
-    The Battle Pass system is a significant revenue generator for Fortnite, offering players a tiered reward structure that encourages engagement and regular play.
-  </p>
+<h3>Series structure and number of games</h3>
+<p>The franchise spans several main entries and story based titles. Key releases include the original trilogy, a title that shifts to a childhood perspective, Sister Location which introduces new task sequences, Pizzeria Simulator which blends management with survival, Help Wanted which brings virtual reality, and Security Breach which shifts to large free roaming environments. Across entries, the total number of releases is well into the mid teens.</p>
 
-  <h3>Pricing and Value Proposition</h3>
-  <p>Prices for V-Bucks packages and items vary. Below is a typical pricing structure:</p>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Item</th>
-        <th>Price (V-Bucks)</th>
-        <th>Real Money Equivalent</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>V-Bucks Bundle</td>
-        <td>1,000</td>
-        <td>₹799 / $7.99 approx.</td>
-        <td>Basic currency pack.</td>
-      </tr>
-      <tr>
-        <td>Battle Pass</td>
-        <td>950</td>
-        <td>₹759 / $7.59 approx.</td>
-        <td>Seasonal access and rewards.</td>
-      </tr>
-      <tr>
-        <td>Outfits (Skins)</td>
-        <td>800 – 2,000</td>
-        <td>₹640 – ₹1,599</td>
-        <td>Character customization.</td>
-      </tr>
-      <tr>
-        <td>Emotes</td>
-        <td>200 – 500</td>
-        <td>₹160 – ₹400</td>
-        <td>Dances and gestures.</td>
-      </tr>
-      <tr>
-        <td>Back Bling</td>
-        <td>500 – 1,500</td>
-        <td>₹400 – ₹1,199</td>
-        <td>Cosmetic backpacks and accessories.</td>
-      </tr>
-    </tbody>
-  </table>
+<h3>Atmosphere and horror style</h3>
+<p>The series depends heavily on atmosphere. Scarce lighting, sudden audio cues, mechanical ambience, and long periods of silence create unease. The animatronics feel familiar yet unsettling, drawing on childhood memories of themed restaurants while presenting uncanny expressions and movement.</p>
 
-  <h3>Economic Impact on Player Behavior</h3>
-  <p>
-    Fortnite’s economy incentivizes players to engage regularly through the Battle Pass rewards and limited-time offers, driving repeat purchases and player retention.
-  </p>
 
-  <h3>Influence on the Gaming Industry</h3>
-  <p>
-    Fortnite’s economic model has been influential in popularizing free-to-play games with cosmetic-only monetization, demonstrating that games can be financially successful without affecting competitive fairness.
-  </p>
+<h3>Lore and narrative depth</h3>
+<p>The narrative has expanded into a complex mystery filled with hidden clues, secret minigames, alternate endings, and community driven puzzles. Fans assemble the story from fragments, engaging with themes of memory, guilt, and consequences of human error.</p>
 
-  <h3>Conclusion</h3>
-  <p>
-    The Fortnite economy balances monetization and player satisfaction by offering a wide range of cosmetic purchases powered by V-Bucks.
-  </p>
+
+<h3>Innovation across titles</h3>
+<p>Later releases experiment with new systems. Sister Location introduces movement focused tasks. Pizzeria Simulator blends simulation with survival elements. Help Wanted reimagines encounters in virtual environments. Security Breach moves to a large continuous space rather than a night by night format.</p>
+
+
+<h3>Cultural impact</h3>
+<p>The franchise has influenced online horror culture through streaming, theory channels, fan art, and community challenges. Its accessible controls and deep lore have made it a lasting icon of modern horror gaming.</p>
+
 </div>
 
 <footer>
