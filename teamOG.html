@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Team</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&family=Chakra+Petch:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --text: #f0f0f0;
+      --primary: #8a2be2;
+      --impact-color: #ff3cac;
+      --analysis-color: #38bdf8;
+      --economy-color: #f97316;
+      --strategy-color: #22c55e;
+      --team-color: #60a5fa;
+      --design-color: #ec4899;
+      --marketing-color: #fbbf24;
+      --video-color: #818cf8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Chakra Petch', sans-serif;
+      background: url('background.png') center/cover no-repeat fixed;
+      color: var(--text);
+      min-height: 100vh;
+    }
+.hero p.subtitle {
+  font-size: 1.1rem;
+  color: #ffffff;
+  margin-top: 0.5rem;
+  opacity: 0.85;
+}
+
+    header {
+      background: rgba(10, 10, 10, 0.95);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+nav ul li {
+  position: relative;
+  margin-left: 1.5rem;
+}
+
+nav ul li a {
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s;
+  display: block;
+  padding: 0.25rem 0.5rem;
+  border-bottom: none;
+  color: inherit;
+}
+
+nav ul li.home > a { color: var(--primary); }
+nav ul li.impact > a { color: var(--impact-color); }
+nav ul li.analysis > a { color: var(--analysis-color); }
+nav ul li.economy > a { color: var(--economy-color); }
+nav ul li.strategy > a { color: var(--strategy-color); }
+nav ul li.team > a { color: var(--team-color); }
+
+nav ul li.active > a {
+  border-bottom: 2px solid currentColor;
+  font-weight: 900;
+}
+
+nav ul li a:hover {
+  color: var(--team-color);
+}
+
+nav ul li ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #111;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  min-width: 160px;
+  z-index: 2000;
+}
+
+nav ul li:hover ul {
+  display: block;
+}
+
+nav ul li ul li {
+  margin: 0.3rem 0;
+}
+
+nav ul li ul li a {
+  text-decoration: none;
+  font-size: 0.95rem;
+  padding: 0.25rem 0;
+  transition: color 0.3s;
+  display: block;
+}
+
+nav ul li.impact ul li a { color: var(--impact-color); }
+nav ul li.analysis ul li a { color: var(--analysis-color); }
+nav ul li.economy ul li a { color: var(--economy-color); }
+nav ul li.strategy ul li a { color: var(--strategy-color); }
+nav ul li.team ul li a { color: var(--team-color); }
+
+nav ul li ul li a:hover {
+  filter: brightness(120%);
+}
+    .hero {
+      text-align: center;
+      padding: 5rem 2rem 2rem;
+      background: rgba(10, 10, 10, 0.6);
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      font-family: 'Orbitron', sans-serif;
+      color: var(--team-color);
+      margin-bottom: 1rem;
+    }
+
+    .cards {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      padding: 2rem;
+      align-items: center;
+    }
+
+    .role-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+
+    .card {
+      width: 200px;
+      height: 260px;
+      perspective: 1000px;
+      position: relative;
+    }
+
+    .card.founder {
+      width: 380px;
+      height: 360px;
+    }
+
+    .card-inner {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      position: relative;
+    }
+
+    .card:hover .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+      padding: 1rem;
+      text-align: center;
+      backface-visibility: hidden;
+      color: white;
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+    }
+
+    .badge {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      background: rgba(0, 0, 0, 0.85);
+      color: white;
+      font-size: 0.7rem;
+      padding: 0.3rem 0.8rem;
+      font-weight: bold;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .card[data-role="Founder"] .card-front,
+    .card[data-role="Founder"] .card-back {
+      background: linear-gradient(135deg, var(--primary), #6d28d9);
+    }
+
+    .card[data-role="Strategy"] .card-front,
+    .card[data-role="Strategy"] .card-back {
+      background: linear-gradient(135deg, var(--strategy-color), #16a34a);
+    }
+
+    .card[data-role="Analysis"] .card-front,
+    .card[data-role="Analysis"] .card-back {
+      background: linear-gradient(135deg, var(--analysis-color), #0284c7);
+    }
+
+    .card[data-role="Economy"] .card-front,
+    .card[data-role="Economy"] .card-back {
+      background: linear-gradient(135deg, var(--economy-color), #92400e);
+    }
+
+    .card[data-role="Marketing"] .card-front,
+    .card[data-role="Marketing"] .card-back {
+      background: linear-gradient(135deg, var(--marketing-color), #d97706);
+    }
+
+    .card[data-role="Impact"] .card-front,
+    .card[data-role="Impact"] .card-back {
+      background: linear-gradient(135deg, var(--impact-color), #a21caf);
+    }
+
+    .card[data-role="Design"] .card-front,
+    .card[data-role="Design"] .card-back {
+      background: linear-gradient(135deg, var(--design-color), #f43f5e);
+    }
+
+    .card[data-role="Video"] .card-front,
+    .card[data-role="Video"] .card-back {
+      background: linear-gradient(135deg, var(--video-color), #4f46e5);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #777;
+      background-color: rgba(10, 10, 10, 0.85);
+      border-top: 1px solid #222;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="logo">Gamified</div>
+ <nav>
+  <ul>
+    <li class="home"><a href="index.html">Home</a></li>
+
+    <li class="impact"><a href="impact.html">Impact</a>
+      <ul>
+        <li><a href="impact/valorant.html">Valorant</a></li>
+        <li><a href="impact/fortnite.html">Fortnite</a></li>
+        <li><a href="impact/fnaf.html" style="font-weight:bold;">FNAF</a></li>
+      </ul>
+    </li>
+
+    <li class="analysis"><a href="analysis.html">Analysis</a>
+      <ul>
+        <li><a href="analysis/valorant.html">Valorant</a></li>
+        <li><a href="analysis/fortnite.html">Fortnite</a></li>
+        <li><a href="analysis/fnaf.html" style="font-weight:bold;">FNAF</a></li>
+      </ul>
+    </li>
+
+    <li class="economy"><a href="economy.html">Economy</a>
+      <ul>
+        <li><a href="economy/valorant.html">Valorant</a></li>
+        <li><a href="economy/fortnite.html">Fortnite</a></li>
+        <li><a href="economy/fnaf.html" style="font-weight:bold;">FNAF</a></li>
+      </ul>
+    </li>
+
+    <li class="strategy"><a href="strategy.html">Strategy</a>
+      <ul>
+        <li><a href="strategy/valorant.html">Valorant</a></li>
+        <li><a href="strategy/fortnite.html">Fortnite</a></li>
+        <li><a href="strategy/fnaf.html" style="font-weight:bold;">FNAF</a></li>
+      </ul>
+    </li>
+
+    <li class="team active"><a href="team.html">Our Team</a></li>
+  </ul>
+</nav>
+
+</header>
+<section class="hero">
+  <h2>Meet the Team</h2>
+  <p class="subtitle">A diverse crew of strategists, analysts, designers, and creators — the force behind Gamified.</p>
+</section>
+<div class="cards">
+  <div class="role-row">
+    <div class="card founder" data-role="Founder">
+      <div class="badge">Founder</div>
+      <div class="card-inner">
+        <div class="card-front">Bhavyay</div>
+        <div class="card-back"> The guy who turned what many dismissed as play into a foundation for change. He built Gamified to challenge the outdated narrative around gaming, proving that it is not a distraction, but a powerful tool for learning, leadership, and lasting change.</div>
+      </div>
+    </div>
+  </div>
+  <div class="role-row">
+    <div class="card" data-role="Strategy"><div class="badge">Strategy</div><div class="card-inner"><div class="card-front">Adish</div><div class="card-back">Passionate gamer striving to make gaming a part of modern culture.</div></div></div>
+    <div class="card" data-role="Strategy"><div class="badge">Strategy</div><div class="card-inner"><div class="card-front">Manvik</div><div class="card-back">Ambitious gamer transforming how the world sees gaming.</div></div></div>
+ <div class="card" data-role="Strategy"><div class="badge">Strategy</div><div class="card-inner"><div class="card-front">Saksham</div><div class="card-back">Developer crafting innovative digital solutions daily.</div></div></div>
+  </div>
+  <div class="role-row">
+    <div class="card" data-role="Analysis"><div class="badge">Analysis</div><div class="card-inner"><div class="card-front">Aditya</div><div class="card-back">High school student trying to show that video games can also be a career.</div></div></div>
+    <div class="card" data-role="Analysis"><div class="badge">Analysis</div><div class="card-inner"><div class="card-front">Siddh</div><div class="card-back">Finds balance tweaks that matter.</div></div></div>
+    <div class="card" data-role="Analysis"><div class="badge">Analysis</div><div class="card-inner"><div class="card-front">Aviyukth</div><div class="card-back">Graphs your win rate curve.</div></div></div>
+  </div>
+  <div class="role-row">
+    <div class="card" data-role="Economy"><div class="badge">Economy</div><div class="card-inner"><div class="card-front">Vanya</div><div class="card-back">Data-driven economics enthusiast decoding games</div></div></div>
+    <div class="card" data-role="Economy"><div class="badge">Economy</div><div class="card-inner"><div class="card-front">Ayush</div><div class="card-back">Aspiring economist applying it daily.</div></div></div>
+    <div class="card" data-role="Economy"><div class="badge">Economy</div><div class="card-inner"><div class="card-front">Sanskriti</div><div class="card-back">A poet inking numbers.</div></div></div>
+    <div class="card" data-role="Economy"><div class="badge">Economy</div><div class="card-inner"><div class="card-front">Nikhil</div><div class="card-back">High school student driven by torque and theories.</div></div></div>
+  </div>
+  <div class="role-row">
+    <div class="card" data-role="Impact"><div class="badge">Impact</div><div class="card-inner"><div class="card-front">Anhadgeet</div><div class="card-back">Digital to real change.</div></div></div>
+    <div class="card" data-role="Impact"><div class="badge">Impact</div><div class="card-inner"><div class="card-front">Muskan</div><div class="card-back">Voice of players.</div></div></div>
+  </div>
+  <div class="role-row">
+    <div class="card" data-role="Design"><div class="badge">Design</div><div class="card-inner"><div class="card-front">Manpreet</div><div class="card-back">Small artist who loves art and creativity.</div></div></div>
+    <div class="card" data-role="Design"><div class="badge">Design</div><div class="card-inner"><div class="card-front">Zahrah</div><div class="card-back">An artist who creates captivating art and loves creativity.</div></div></div>
+  </div>
+  <div class="role-row">
+    <div class="card" data-role="Marketing"><div class="badge">Marketing</div><div class="card-inner"><div class="card-front">Swini</div><div class="card-back">Passionate changemaker driven to challenge norms.</div></div></div>
+    <div class="card" data-role="Marketing"><div class="badge">Marketing</div><div class="card-inner"><div class="card-front">Aanya</div><div class="card-back">Driven by curiosity, fueled by purpose.</div></div></div>
+    <div class="card" data-role="Marketing"><div class="badge">Marketing</div><div class="card-inner"><div class="card-front">Gaurika</div><div class="card-back">On a joureny to turn inspiration into action.</div></div></div>
+    <div class="card" data-role="Marketing"><div class="badge">Marketing</div><div class="card-inner"><div class="card-front">Aannyaa</div><div class="card-back">Levelling up your feed, one epic trend at a time.</div></div></div>
+  </div>
+  <div class="role-row">
+    <div class="card" data-role="Video"><div class="badge">Video</div><div class="card-inner"><div class="card-front">Aayush</div><div class="card-back">Turning raw gaming content into full fledged cuts.</div></div></div>
+    <div class="card" data-role="Video"><div class="badge">Video</div><div class="card-inner"><div class="card-front">Abhimanyu</div><div class="card-back">Smoothest transitions.</div></div></div>
+  </div>
+</div>
+<footer>
+  &copy; 2025 Gamified. Built by players, for players.
+</footer>
+</body>
+</html>

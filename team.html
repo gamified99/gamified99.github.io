@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Team</title>
+  <title>Team | Gamified</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&family=Chakra+Petch:wght@400;700&display=swap" rel="stylesheet" />
   <style>
@@ -29,17 +29,15 @@
 
     body {
       font-family: 'Chakra Petch', sans-serif;
+      /* Background image logic restored */
       background: url('background.png') center/cover no-repeat fixed;
       color: var(--text);
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
-.hero p.subtitle {
-  font-size: 1.1rem;
-  color: #ffffff;
-  margin-top: 0.5rem;
-  opacity: 0.85;
-}
 
+    /* --- Navigation --- */
     header {
       background: rgba(10, 10, 10, 0.95);
       padding: 1rem 2rem;
@@ -49,6 +47,7 @@
       position: sticky;
       top: 0;
       z-index: 1000;
+      border-bottom: 1px solid #222;
     }
 
     .logo {
@@ -57,124 +56,159 @@
       font-weight: 800;
       color: var(--primary);
     }
-nav ul {
-  list-style: none;
-  display: flex;
-  align-items: center;
-}
 
-nav ul li {
-  position: relative;
-  margin-left: 1.5rem;
-}
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+    }
 
-nav ul li a {
-  text-decoration: none;
-  font-weight: bold;
-  transition: all 0.3s;
-  display: block;
-  padding: 0.25rem 0.5rem;
-  border-bottom: none;
-  color: inherit;
-}
+    nav ul li {
+      position: relative;
+      margin-left: 1.5rem;
+    }
 
-nav ul li.home > a { color: var(--primary); }
-nav ul li.impact > a { color: var(--impact-color); }
-nav ul li.analysis > a { color: var(--analysis-color); }
-nav ul li.economy > a { color: var(--economy-color); }
-nav ul li.strategy > a { color: var(--strategy-color); }
-nav ul li.team > a { color: var(--team-color); }
+    nav ul li a {
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s;
+      display: block;
+      padding: 0.25rem 0.5rem;
+      border-bottom: none;
+      color: inherit;
+    }
 
-nav ul li.active > a {
-  border-bottom: 2px solid currentColor;
-  font-weight: 900;
-}
+    /* Nav Colors */
+    nav ul li.home > a { color: var(--primary); }
+    nav ul li.impact > a { color: var(--impact-color); }
+    nav ul li.analysis > a { color: var(--analysis-color); }
+    nav ul li.economy > a { color: var(--economy-color); }
+    nav ul li.strategy > a { color: var(--strategy-color); }
+    nav ul li.team > a { color: var(--team-color); }
 
-nav ul li a:hover {
-  color: var(--team-color);
-}
+    nav ul li.active > a {
+      border-bottom: 2px solid currentColor;
+      font-weight: 900;
+    }
 
-nav ul li ul {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: #111;
-  padding: 0.8rem 1rem;
-  border-radius: 8px;
-  min-width: 160px;
-  z-index: 2000;
-}
+    nav ul li a:hover {
+      color: var(--team-color)
+    }
 
-nav ul li:hover ul {
-  display: block;
-}
+    /* Dropdowns */
+    nav ul li ul {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #111;
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      min-width: 160px;
+      z-index: 2000;
+      border: 1px solid #333;
+    }
+    nav ul li.impact ul li a { color: var(--impact-color); }
+    nav ul li.analysis ul li a { color: var(--analysis-color); }
+    nav ul li.economy ul li a { color: var(--economy-color); }
+    nav ul li.strategy ul li a { color: var(--strategy-color); }
+    nav ul li.team ul li a { color: var(--team-color); }
+    nav ul li:hover ul { display: block; }
+    nav ul li ul li { margin: 0.3rem 0; margin-left: 0; }
+    nav ul li ul li a { font-size: 0.95rem; }
+    nav ul li ul li a:hover { filter: brightness(120%); }
 
-nav ul li ul li {
-  margin: 0.3rem 0;
-}
-
-nav ul li ul li a {
-  text-decoration: none;
-  font-size: 0.95rem;
-  padding: 0.25rem 0;
-  transition: color 0.3s;
-  display: block;
-}
-
-nav ul li.impact ul li a { color: var(--impact-color); }
-nav ul li.analysis ul li a { color: var(--analysis-color); }
-nav ul li.economy ul li a { color: var(--economy-color); }
-nav ul li.strategy ul li a { color: var(--strategy-color); }
-nav ul li.team ul li a { color: var(--team-color); }
-
-nav ul li ul li a:hover {
-  filter: brightness(120%);
-}
+    /* --- Hero Section --- */
     .hero {
       text-align: center;
-      padding: 5rem 2rem 2rem;
+      padding: 5rem 2rem 3rem;
+      /* Reverted to lighter overlay so background shows through */
       background: rgba(10, 10, 10, 0.6);
     }
 
     .hero h2 {
-      font-size: 2.5rem;
+      font-size: 3rem;
       font-family: 'Orbitron', sans-serif;
       color: var(--team-color);
       margin-bottom: 1rem;
     }
 
-    .cards {
+    .hero p.subtitle {
+      font-size: 1.2rem;
+      color: #fff;
+      max-width: 600px;
+      margin: 0 auto;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    }
+
+    /* --- Team Layout --- */
+    .main-content {
+      padding: 2rem;
       display: flex;
       flex-direction: column;
-      gap: 3rem;
-      padding: 2rem;
       align-items: center;
+      gap: 4rem; 
+      padding-bottom: 5rem;
+      /* REMOVED the dark background color here */
+      background-color: transparent;
+    }
+
+    .team-group {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .group-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      position: relative;
+      display: inline-block;
+      /* Added text shadow for better visibility against background image */
+      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    }
+    
+    .group-title::after {
+      content: '';
+      display: block;
+      width: 50%;
+      height: 3px;
+      background: currentColor;
+      margin: 0.5rem auto 0;
+      border-radius: 2px;
+      box-shadow: 0 0 10px currentColor;
     }
 
     .role-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 1.5rem;
+      gap: 2rem;
       justify-content: center;
     }
 
+    /* --- Card Styles --- */
     .card {
-      width: 200px;
-      height: 260px;
+      width: 220px;
+      height: 300px;
       perspective: 1000px;
       position: relative;
+      cursor: pointer;
     }
 
     .card.founder {
       width: 380px;
-      height: 360px;
+      height: 400px;
     }
 
     .card-inner {
       width: 100%;
       height: 100%;
-      transition: transform 0.6s;
+      transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
       transform-style: preserve-3d;
       position: relative;
     }
@@ -187,73 +221,102 @@ nav ul li ul li a:hover {
       position: absolute;
       width: 100%;
       height: 100%;
-      border-radius: 12px;
+      border-radius: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: bold;
-      font-size: 1.2rem;
       padding: 1rem;
       text-align: center;
       backface-visibility: hidden;
       color: white;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.1);
     }
 
+    /* Front Layout */
+    .card-front {
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 2rem;
+    }
+
+    .profile-img {
+      width: 110px;
+      height: 110px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+
+    .profile-name {
+      margin-top: 15px;
+      font-size: 1.2rem;
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 800;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+    }
+
+    /* Founder Specifics */
+    .card.founder .profile-img {
+      width: 180px;
+      height: 180px;
+      border-width: 5px;
+    }
+    .card.founder .profile-name {
+      font-size: 2rem;
+    }
+
+    /* Back Layout */
     .card-back {
       transform: rotateY(180deg);
+      font-size: 1rem;
+      line-height: 1.5;
+      font-weight: 500;
+      padding: 1.5rem;
     }
 
     .badge {
       position: absolute;
-      top: 0.5rem;
-      right: 0.5rem;
-      background: rgba(0, 0, 0, 0.85);
+      top: 1rem;
+      right: 1rem;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
       color: white;
-      font-size: 0.7rem;
-      padding: 0.3rem 0.8rem;
+      font-size: 0.75rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
       font-weight: bold;
-      pointer-events: none;
       z-index: 3;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
-    .card[data-role="Founder"] .card-front,
-    .card[data-role="Founder"] .card-back {
+    /* --- Role Colors (Gradients) --- */
+    .card[data-role="Founder"] .card-front, .card[data-role="Founder"] .card-back {
       background: linear-gradient(135deg, var(--primary), #6d28d9);
     }
-
-    .card[data-role="Strategy"] .card-front,
-    .card[data-role="Strategy"] .card-back {
-      background: linear-gradient(135deg, var(--strategy-color), #16a34a);
+    .card[data-role="Strategy"] .card-front, .card[data-role="Strategy"] .card-back {
+      background: linear-gradient(135deg, var(--strategy-color), #15803d);
     }
-
-    .card[data-role="Analysis"] .card-front,
-    .card[data-role="Analysis"] .card-back {
-      background: linear-gradient(135deg, var(--analysis-color), #0284c7);
+    .card[data-role="Analysis"] .card-front, .card[data-role="Analysis"] .card-back {
+      background: linear-gradient(135deg, var(--analysis-color), #0369a1);
     }
-
-    .card[data-role="Economy"] .card-front,
-    .card[data-role="Economy"] .card-back {
-      background: linear-gradient(135deg, var(--economy-color), #92400e);
+    .card[data-role="Economy"] .card-front, .card[data-role="Economy"] .card-back {
+      background: linear-gradient(135deg, var(--economy-color), #c2410c);
     }
-
-    .card[data-role="Marketing"] .card-front,
-    .card[data-role="Marketing"] .card-back {
-      background: linear-gradient(135deg, var(--marketing-color), #d97706);
+    .card[data-role="Marketing"] .card-front, .card[data-role="Marketing"] .card-back {
+      background: linear-gradient(135deg, var(--marketing-color), #b45309);
     }
-
-    .card[data-role="Impact"] .card-front,
-    .card[data-role="Impact"] .card-back {
-      background: linear-gradient(135deg, var(--impact-color), #a21caf);
+    .card[data-role="Impact"] .card-front, .card[data-role="Impact"] .card-back {
+      background: linear-gradient(135deg, var(--impact-color), #86198f);
     }
-
-    .card[data-role="Design"] .card-front,
-    .card[data-role="Design"] .card-back {
-      background: linear-gradient(135deg, var(--design-color), #f43f5e);
-    }
-
-    .card[data-role="Video"] .card-front,
-    .card[data-role="Video"] .card-back {
-      background: linear-gradient(135deg, var(--video-color), #4f46e5);
+    .card[data-role="Design"] .card-front, .card[data-role="Design"] .card-back {
+      background: linear-gradient(135deg, var(--design-color), #be123c);
     }
 
     footer {
@@ -261,104 +324,273 @@ nav ul li ul li a:hover {
       padding: 2rem;
       font-size: 0.9rem;
       color: #777;
-      background-color: rgba(10, 10, 10, 0.85);
+      background-color: #050505;
       border-top: 1px solid #222;
+      margin-top: auto;
     }
   </style>
 </head>
 <body>
+
 <header>
   <div class="logo">Gamified</div>
- <nav>
-  <ul>
-    <li class="home"><a href="index.html">Home</a></li>
-
-    <li class="impact"><a href="impact.html">Impact</a>
-      <ul>
-        <li><a href="impact/valorant.html">Valorant</a></li>
-        <li><a href="impact/fortnite.html">Fortnite</a></li>
-        <li><a href="impact/fnaf.html" style="font-weight:bold;">FNAF</a></li>
-      </ul>
-    </li>
-
-    <li class="analysis"><a href="analysis.html">Analysis</a>
-      <ul>
-        <li><a href="analysis/valorant.html">Valorant</a></li>
-        <li><a href="analysis/fortnite.html">Fortnite</a></li>
-        <li><a href="analysis/fnaf.html" style="font-weight:bold;">FNAF</a></li>
-      </ul>
-    </li>
-
-    <li class="economy"><a href="economy.html">Economy</a>
-      <ul>
-        <li><a href="economy/valorant.html">Valorant</a></li>
-        <li><a href="economy/fortnite.html">Fortnite</a></li>
-        <li><a href="economy/fnaf.html" style="font-weight:bold;">FNAF</a></li>
-      </ul>
-    </li>
-
-    <li class="strategy"><a href="strategy.html">Strategy</a>
-      <ul>
-        <li><a href="strategy/valorant.html">Valorant</a></li>
-        <li><a href="strategy/fortnite.html">Fortnite</a></li>
-        <li><a href="strategy/fnaf.html" style="font-weight:bold;">FNAF</a></li>
-      </ul>
-    </li>
-
-    <li class="team active"><a href="team.html">Our Team</a></li>
-  </ul>
-</nav>
-
+  <nav>
+    <ul>
+      <li class="home"><a href="index.html">Home</a></li>
+      <li class="impact"><a href="impact.html">Impact</a>
+        <ul>
+          <li><a href="impact/valorant.html">Valorant</a></li>
+          <li><a href="impact/fortnite.html">Fortnite</a></li>
+          <li><a href="impact/fnaf.html" style="font-weight:bold;">FNAF</a></li>
+        </ul>
+      </li>
+      <li class="analysis"><a href="analysis.html">Analysis</a>
+        <ul>
+          <li><a href="analysis/valorant.html">Valorant</a></li>
+          <li><a href="analysis/fortnite.html">Fortnite</a></li>
+          <li><a href="analysis/fnaf.html" style="font-weight:bold;">FNAF</a></li>
+        </ul>
+      </li>
+      <li class="economy"><a href="economy.html">Economy</a>
+        <ul>
+          <li><a href="economy/valorant.html">Valorant</a></li>
+          <li><a href="economy/fortnite.html">Fortnite</a></li>
+          <li><a href="economy/fnaf.html" style="font-weight:bold;">FNAF</a></li>
+        </ul>
+      </li>
+      <li class="strategy"><a href="strategy.html">Strategy</a>
+        <ul>
+          <li><a href="strategy/valorant.html">Valorant</a></li>
+          <li><a href="strategy/fortnite.html">Fortnite</a></li>
+          <li><a href="strategy/fnaf.html" style="font-weight:bold;">FNAF</a></li>
+        </ul>
+      </li>
+      <li class="team active"><a href="team.html">Our Team</a></li>
+    </ul>
+  </nav>
 </header>
+
 <section class="hero">
   <h2>Meet the Team</h2>
   <p class="subtitle">A diverse crew of strategists, analysts, designers, and creators — the force behind Gamified.</p>
 </section>
-<div class="cards">
-  <div class="role-row">
-    <div class="card founder" data-role="Founder">
-      <div class="badge">Founder</div>
-      <div class="card-inner">
-        <div class="card-front">Bhavyay</div>
-        <div class="card-back"> The guy who turned what many dismissed as play into a foundation for change. He built Gamified to challenge the outdated narrative around gaming, proving that it is not a distraction, but a powerful tool for learning, leadership, and lasting change.</div>
+
+<div class="main-content">
+
+  <div class="team-group">
+    <h3 class="group-title" style="color: var(--primary);">Visionary</h3>
+    <div class="role-row">
+      <div class="card founder" data-role="Founder">
+        <div class="badge">Founder</div>
+        <div class="card-inner">
+          <div class="card-front">
+              <img src="images/founder.jpg" alt="Bhavyay" class="profile-img">
+              <div class="profile-name">Bhavyay</div>
+          </div>
+          <div class="card-back">The guy who turned what many dismissed as play into a foundation for change challenging the outdated narrative around gaming.</div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="role-row">
-    <div class="card" data-role="Strategy"><div class="badge">Strategy</div><div class="card-inner"><div class="card-front">Adish</div><div class="card-back">Passionate gamer striving to make gaming a part of modern culture.</div></div></div>
-    <div class="card" data-role="Strategy"><div class="badge">Strategy</div><div class="card-inner"><div class="card-front">Manvik</div><div class="card-back">Ambitious gamer transforming how the world sees gaming.</div></div></div>
- <div class="card" data-role="Strategy"><div class="badge">Strategy</div><div class="card-inner"><div class="card-front">Saksham</div><div class="card-back">Developer crafting innovative digital solutions daily.</div></div></div>
+
+  <div class="team-group">
+    <h3 class="group-title" style="color: var(--design-color);">Design</h3>
+    <div class="role-row">
+      <div class="card" data-role="Design">
+          <div class="badge">Design</div>
+          <div class="card-inner">
+              <div class="card-front">
+                  <img src="images/design1.jpg" alt="Manpreet" class="profile-img">
+                  <div class="profile-name">Manpreet</div>
+              </div>
+              <div class="card-back">Small artist who loves art and creativity.</div>
+          </div>
+      </div>
+      <div class="card" data-role="Design">
+          <div class="badge">Design</div>
+          <div class="card-inner">
+              <div class="card-front">
+                  <img src="images/design2.jpg" alt="Dhriti" class="profile-img">
+                  <div class="profile-name">Dhriti</div>
+              </div>
+              <div class="card-back">Small artist who loves art and creativity.</div>
+          </div>
+      </div>
+      <div class="card" data-role="Design">
+          <div class="badge">Design</div>
+          <div class="card-inner">
+              <div class="card-front">
+                  <img src="images/design3.jpg" alt="Mabal" class="profile-img">
+                  <div class="profile-name">Mabal</div>
+              </div>
+              <div class="card-back">Small artist who loves art and creativity.</div>
+          </div>
+      </div>
+      <div class="card" data-role="Design">
+          <div class="badge">Design</div>
+          <div class="card-inner">
+              <div class="card-front">
+                  <img src="images/design4.jpg" alt="Navya" class="profile-img">
+                  <div class="profile-name">Navya</div>
+              </div>
+              <div class="card-back">A quiet soul expressing loud thoughts through art.</div>
+          </div>
+      </div>
+      <div class="card" data-role="Design">
+          <div class="badge">Design</div>
+          <div class="card-inner">
+              <div class="card-front">
+                  <img src="images/design5.jpg" alt="Akshita" class="profile-img">
+                  <div class="profile-name">Akshita</div>
+              </div>
+              <div class="card-back">Turning pixels into design.</div>
+          </div>
+      </div>
+    </div>
   </div>
-  <div class="role-row">
-    <div class="card" data-role="Analysis"><div class="badge">Analysis</div><div class="card-inner"><div class="card-front">Aditya</div><div class="card-back">High school student trying to show that video games can also be a career.</div></div></div>
-    <div class="card" data-role="Analysis"><div class="badge">Analysis</div><div class="card-inner"><div class="card-front">Siddh</div><div class="card-back">Finds balance tweaks that matter.</div></div></div>
-    <div class="card" data-role="Analysis"><div class="badge">Analysis</div><div class="card-inner"><div class="card-front">Aviyukth</div><div class="card-back">Graphs your win rate curve.</div></div></div>
+
+  <div class="team-group">
+    <h3 class="group-title" style="color: var(--impact-color);">Impact</h3>
+    <div class="role-row">
+      <div class="card" data-role="Impact">
+          <div class="badge">Impact</div>
+          <div class="card-inner">
+              <div class="card-front">
+                  <img src="images/impact1.jpg" alt="Anhad" class="profile-img">
+                  <div class="profile-name">Anhad</div>
+              </div>
+              <div class="card-back">Focusing on how games influence behaviour and impact everyday lives.</div>
+          </div>
+      </div>
+      <div class="card" data-role="Impact">
+          <div class="badge">Impact</div>
+          <div class="card-inner">
+              <div class="card-front">
+                  <img src="images/impact2.jpg" alt="Muskan" class="profile-img">
+                  <div class="profile-name">Muskan</div>
+              </div>
+              <div class="card-back">Voice of players.</div>
+          </div>
+      </div>
+    </div>
   </div>
-  <div class="role-row">
-    <div class="card" data-role="Economy"><div class="badge">Economy</div><div class="card-inner"><div class="card-front">Vanya</div><div class="card-back">Data-driven economics enthusiast decoding games</div></div></div>
-    <div class="card" data-role="Economy"><div class="badge">Economy</div><div class="card-inner"><div class="card-front">Ayush</div><div class="card-back">Aspiring economist applying it daily.</div></div></div>
-    <div class="card" data-role="Economy"><div class="badge">Economy</div><div class="card-inner"><div class="card-front">Sanskriti</div><div class="card-back">A poet inking numbers.</div></div></div>
-    <div class="card" data-role="Economy"><div class="badge">Economy</div><div class="card-inner"><div class="card-front">Nikhil</div><div class="card-back">High school student driven by torque and theories.</div></div></div>
+
+  <div class="team-group">
+    <h3 class="group-title" style="color: var(--analysis-color);">Analysis</h3>
+    <div class="role-row">
+      <div class="card" data-role="Analysis">
+          <div class="badge">Analysis</div>
+          <div class="card-inner">
+              <div class="card-front">
+                  <img src="images/analysis1.jpg" alt="Aditya" class="profile-img">
+                  <div class="profile-name">Aditya</div>
+              </div>
+              <div class="card-back">High school student trying to show that video games can also be a career.</div>
+          </div>
+      </div>
+      <div class="card" data-role="Analysis">
+          <div class="badge">Analysis</div>
+          <div class="card-inner">
+              <div class="card-front">
+                  <img src="images/analysis2.jpg" alt="Deven" class="profile-img">
+                  <div class="profile-name">Deven</div>
+              </div>
+              <div class="card-back">Finds balance tweaks that matter.</div>
+          </div>
+      </div>
+      <div class="card" data-role="Analysis">
+          <div class="badge">Analysis</div>
+          <div class="card-inner">
+              <div class="card-front">
+                  <img src="images/analysis3.jpg" alt="Saksham" class="profile-img">
+                  <div class="profile-name">Saksham</div>
+              </div>
+              <div class="card-back">Developer crafting innovative digital solutions daily.</div>
+          </div>
+      </div>
+    </div>
   </div>
-  <div class="role-row">
-    <div class="card" data-role="Impact"><div class="badge">Impact</div><div class="card-inner"><div class="card-front">Anhadgeet</div><div class="card-back">Digital to real change.</div></div></div>
-    <div class="card" data-role="Impact"><div class="badge">Impact</div><div class="card-inner"><div class="card-front">Muskan</div><div class="card-back">Voice of players.</div></div></div>
+
+  <div class="team-group">
+    <h3 class="group-title" style="color: var(--economy-color);">Economy</h3>
+    <div class="role-row">
+      <div class="card" data-role="Economy">
+          <div class="badge">Economy</div>
+          <div class="card-inner">
+              <div class="card-front">
+                  <img src="images/economy1.jpg" alt="Vanya" class="profile-img">
+                  <div class="profile-name">Vanya</div>
+              </div>
+              <div class="card-back">Data-driven economics enthusiast decoding games</div>
+          </div>
+      </div>
+      <div class="card" data-role="Economy">
+          <div class="badge">Economy</div>
+          <div class="card-inner">
+              <div class="card-front">
+                  <img src="images/economy2.jpg" alt="Ayush" class="profile-img">
+                  <div class="profile-name">Ayush</div>
+              </div>
+              <div class="card-back">Aspiring economist applying it daily.</div>
+          </div>
+      </div>
+      <div class="card" data-role="Economy">
+          <div class="badge">Economy</div>
+          <div class="card-inner">
+              <div class="card-front">
+                  <img src="images/economy3.jpg" alt="Sanskriti" class="profile-img">
+                  <div class="profile-name">Sanskriti</div>
+              </div>
+              <div class="card-back">A poet inking numbers.</div>
+          </div>
+      </div>
+    </div>
   </div>
-  <div class="role-row">
-    <div class="card" data-role="Design"><div class="badge">Design</div><div class="card-inner"><div class="card-front">Manpreet</div><div class="card-back">Small artist who loves art and creativity.</div></div></div>
-    <div class="card" data-role="Design"><div class="badge">Design</div><div class="card-inner"><div class="card-front">Zahrah</div><div class="card-back">An artist who creates captivating art and loves creativity.</div></div></div>
+
+  <div class="team-group">
+    <h3 class="group-title" style="color: var(--strategy-color);">Strategy</h3>
+    <div class="role-row">
+      <div class="card" data-role="Strategy">
+          <div class="badge">Strategy</div>
+          <div class="card-inner">
+              <div class="card-front">
+                  <img src="images/strategy1.jpg" alt="Adish" class="profile-img">
+                  <div class="profile-name">Adish</div>
+              </div>
+              <div class="card-back">Passionate gamer striving to make gaming a part of modern culture.</div>
+          </div>
+      </div>
+      <div class="card" data-role="Strategy">
+          <div class="badge">Strategy</div>
+          <div class="card-inner">
+              <div class="card-front">
+                  <img src="images/strategy2.jpg" alt="Manvik" class="profile-img">
+                  <div class="profile-name">Manvik</div>
+              </div>
+              <div class="card-back">Ambitious gamer transforming how the world sees gaming.</div>
+          </div>
+      </div>
+    </div>
   </div>
-  <div class="role-row">
-    <div class="card" data-role="Marketing"><div class="badge">Marketing</div><div class="card-inner"><div class="card-front">Swini</div><div class="card-back">Passionate changemaker driven to challenge norms.</div></div></div>
-    <div class="card" data-role="Marketing"><div class="badge">Marketing</div><div class="card-inner"><div class="card-front">Aanya</div><div class="card-back">Driven by curiosity, fueled by purpose.</div></div></div>
-    <div class="card" data-role="Marketing"><div class="badge">Marketing</div><div class="card-inner"><div class="card-front">Gaurika</div><div class="card-back">On a joureny to turn inspiration into action.</div></div></div>
-    <div class="card" data-role="Marketing"><div class="badge">Marketing</div><div class="card-inner"><div class="card-front">Aannyaa</div><div class="card-back">Levelling up your feed, one epic trend at a time.</div></div></div>
+
+  <div class="team-group">
+    <h3 class="group-title" style="color: var(--marketing-color);">Marketing</h3>
+    <div class="role-row">
+      <div class="card" data-role="Marketing">
+          <div class="badge">Marketing</div>
+          <div class="card-inner">
+              <div class="card-front">
+                  <img src="images/marketing1.jpg" alt="Aannyaa" class="profile-img">
+                  <div class="profile-name">Aannyaa</div>
+              </div>
+              <div class="card-back">Levelling up your feed, one epic trend at a time.</div>
+          </div>
+      </div>
+    </div>
   </div>
-  <div class="role-row">
-    <div class="card" data-role="Video"><div class="badge">Video</div><div class="card-inner"><div class="card-front">Aayush</div><div class="card-back">Turning raw gaming content into full fledged cuts.</div></div></div>
-    <div class="card" data-role="Video"><div class="badge">Video</div><div class="card-inner"><div class="card-front">Abhimanyu</div><div class="card-back">Smoothest transitions.</div></div></div>
-  </div>
+
 </div>
+
 <footer>
   &copy; 2025 Gamified. Built by players, for players.
 </footer>
